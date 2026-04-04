@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1775295849.91862 "/home/christian/Documentos/Reportes_Aut/formularios/tabla.tex" "tabla.pdf" "tabla" 1775295850.84917 0
+["pdflatex"] 1775318947.94872 "/home/christian/Documentos/Reportes_Aut/formularios/tabla.tex" "tabla.pdf" "tabla" 1775318948.98716 0
   "/etc/texmf/web2c/texmf.cnf" 1772315279.85444 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/christian/Documentos/Reportes_Aut/formularios/tabla.tex" 1775295849.60993 11469 5261b06d57a89bdd04e9b48d5a4f50f5 ""
+  "/home/christian/Documentos/Reportes_Aut/formularios/tabla.tex" 1775318946.35692 11471 488e211526b99ce2ad966089f52e01ca ""
   "/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png" 1775295680.69596 93323 9d4c44c465886054e86c16e76268bf97 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
@@ -77,8 +77,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1769369718 41603 27f93b3067076450172040dcd57ca8b3 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1775280913 5541477 3118940318599480888143717dd32d64 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1775280937 3640927 7421864360f7a9c4daa5424a0167ba02 ""
-  "tabla.aux" 1775295850.77997 328 9c9d5c4276cd57377bc21aa15f2bcce3 "pdflatex"
-  "tabla.tex" 1775295849.60993 11469 5261b06d57a89bdd04e9b48d5a4f50f5 ""
+  "tabla.aux" 1775318948.75202 328 9c9d5c4276cd57377bc21aa15f2bcce3 "pdflatex"
+  "tabla.tex" 1775318946.35692 11471 488e211526b99ce2ad966089f52e01ca ""
   (generated)
   "tabla.aux"
   "tabla.log"
