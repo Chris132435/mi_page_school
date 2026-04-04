@@ -1,5 +1,16 @@
 {
   "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
     "tailwindcss": "^4.2.2"
-  }
+  },
+  "name": "reportes_aut",
+  "version": "1.0.0",
+  "description": "school_to_home",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
