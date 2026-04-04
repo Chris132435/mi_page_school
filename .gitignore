@@ -137,3 +137,11 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Ignorar archivos temporales de LaTeX
+*.aux
+*.log
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
