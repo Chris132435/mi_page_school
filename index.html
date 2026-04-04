@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School to Home | Cursos y Asesorías de Ingreso</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          bebas: ['"Bebas Neue"', 'sans-serif'],
+          outfit: ['Outfit', 'sans-serif'],
+        },
+        colors: {
+          accent: '#e8401c',
+          accent2: '#1c6ce8',
+          gold: '#f0b429',
+          cream: '#f5f0e8',
+          ink: '#0d0d0d',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --cream: #f5f0e8;
+    --accent: #e8401c;
+    --accent2: #1c6ce8;
+    --gold: #f0b429;
+    --light: #f9f6f1;
+  }
+  .dark {
+    --ink: #f0ece4;
+    --cream: #111111;
+    --light: #1a1a1a;
+    --gold: #f0b429;
+    --accent: #ff5733;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    transition: background .35s ease, color .35s ease;
+  }
+
+  /* ── DARK MODE TOGGLE ── */
+  .theme-toggle {
+    position: relative; width: 52px; height: 28px;
+    background: #ccc; border-radius: 999px; cursor: pointer;
+    transition: background .3s; border: none; outline: none; flex-shrink: 0;
+  }
+  .theme-toggle.active { background: #1c6ce8; }
+  .theme-toggle::after {
+    content: ''; position: absolute; top: 3px; left: 3px;
+    width: 22px; height: 22px; border-radius: 50%; background: white;
+    transition: transform .3s; box-shadow: 0 1px 4px rgba(0,0,0,.3);
+  }
+  .theme-toggle.active::after { transform: translateX(24px); }
+  .toggle-wrap { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600; letter-spacing: .5px; color: var(--ink); transition: color .3s; }
+  .toggle-icon { font-size: 1rem; transition: transform .4s; }
+  .dark .toggle-icon { transform: rotate(20deg); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 5%; background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(10px); border-bottom: 2px solid var(--ink);
+    transition: background .35s, border-color .35s;
+  }
+  .dark nav { background: rgba(17, 17, 17, 0.92); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 2px; color: var(--ink); text-decoration: none; transition: color .3s; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; color: var(--ink); transition: color .2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--ink) !important; color: var(--cream) !important; padding: 9px 20px; border-radius: 4px; transition: background .2s !important; }
+  .nav-cta:hover { background: var(--accent) !important; }
+
+  /* ── HERO ── */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 5% 80px 7%; }
+  .hero-badge { display: inline-block; background: var(--gold); color: #111; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; width: fit-content; margin-bottom: 28px; animation: fadeUp .6s ease both; }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 6vw, 6rem); line-height: .95; letter-spacing: 1px; animation: fadeUp .7s .1s ease both; color: var(--ink); transition: color .3s; }
+  .hero h1 em { font-style: normal; color: var(--accent); display: block; }
+  .hero-sub { font-size: 1.05rem; font-weight: 400; margin: 28px 0 40px; max-width: 440px; line-height: 1.7; animation: fadeUp .7s .2s ease both; color: #666; transition: color .3s; }
+  .dark .hero-sub { color: #aaa; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp .7s .3s ease both; }
+  .btn-primary { background: var(--accent); color: #fff; padding: 16px 34px; border-radius: 4px; font-weight: 700; font-size: 0.95rem; letter-spacing: .5px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 4px 4px 0 var(--ink); }
+  .btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+  .btn-secondary { background: transparent; color: var(--ink); padding: 16px 34px; border-radius: 4px; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: 2px solid var(--ink); transition: background .2s, color .2s, border-color .3s; }
+  .btn-secondary:hover { background: var(--ink); color: var(--cream); }
+  .hero-stats { display: flex; gap: 36px; margin-top: 56px; padding-top: 36px; border-top: 1.5px solid #ccc; animation: fadeUp .7s .4s ease both; transition: border-color .3s; }
+  .dark .hero-stats { border-color: #333; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; line-height: 1; color: var(--accent); }
+  .stat-label { font-size: 0.8rem; color: #777; font-weight: 500; margin-top: 2px; }
+  .dark .stat-label { color: #888; }
+
+  .hero-right { background: #0d0d0d; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 6%; position: relative; overflow: hidden; }
+  .dark .hero-right { background: #050505; }
+  .hero-right::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: var(--accent); opacity: .12; }
+  .hero-right::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 200px; height: 200px; border-radius: 50%; background: var(--accent2); opacity: .12; }
+  .hero-card { background: #1a1a1a; border: 1.5px solid #333; border-radius: 12px; padding: 36px; width: 100%; max-width: 380px; position: relative; z-index: 1; animation: fadeUp .8s .2s ease both; }
+  .hero-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 1px; color: #f5f0e8; margin-bottom: 6px; }
+  .hero-card p { font-size: 0.85rem; color: #888; margin-bottom: 24px; }
+  .exam-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .exam-item { display: flex; align-items: center; gap: 14px; background: #222; border-radius: 8px; padding: 14px 16px; border: 1px solid #2e2e2e; transition: border-color .2s; }
+  .exam-item:hover { border-color: var(--accent); }
+  .exam-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .exam-item span { font-size: 0.9rem; font-weight: 500; color: #f5f0e8; }
+  .exam-item small { font-size: 0.75rem; color: #666; margin-left: auto; }
+  .weekend-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #111; padding: 10px 18px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; margin-top: 20px; width: 100%; justify-content: center; }
+
+  /* ── SECTION LABELS ── */
+  .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem, 4vw, 3.5rem); letter-spacing: 1px; line-height: 1.05; color: var(--ink); transition: color .3s; }
+
+  /* ── CURSOS ── */
+  .cursos { padding: 100px 7%; background: var(--light); transition: background .35s; }
+  .dark .cursos { background: #161616; }
+  .cursos-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
+  .cursos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .curso-card { background: var(--cream); border: 1.5px solid #ddd; border-radius: 12px; overflow: hidden; transition: transform .3s, box-shadow .3s, background .35s, border-color .35s; }
+  .dark .curso-card { background: #1e1e1e; border-color: #2a2a2a; }
+  .curso-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,.12); }
+  .dark .curso-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,.5); }
+  .curso-header { height: 8px; }
+  .curso-body { padding: 28px; }
+  .curso-icon { font-size: 2rem; margin-bottom: 14px; }
+  .curso-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 1px; margin-bottom: 8px; color: var(--ink); transition: color .3s; }
+  .curso-desc { font-size: 0.88rem; color: #666; line-height: 1.6; margin-bottom: 20px; transition: color .3s; }
+  .dark .curso-desc { color: #999; }
+  .curso-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 0.72rem; font-weight: 600; letter-spacing: .5px; padding: 4px 10px; border-radius: 3px; text-transform: uppercase; }
+  .dark .tag-math { background: #1a2540 !important; color: #6aadff !important; }
+  .dark .tag-esp  { background: #2a2010 !important; color: #d4a030 !important; }
+  .dark .tag-sci  { background: #0f2a15 !important; color: #5ddc5d !important; }
+  .dark .tag-his  { background: #1e1030 !important; color: #b87eff !important; }
+  .dark .tag-red  { background: #2a1208 !important; color: #ff8860 !important; }
+
+  /* ── UNIVERSIDADES ── */
+  .unis { padding: 100px 7%; background: #0d0d0d; color: #f5f0e8; overflow: hidden; position: relative; transition: background .35s; }
+  .dark .unis { background: #080808; }
+  .unis::before { content: 'INGRESO'; position: absolute; top: 40px; right: -20px; font-family: 'Bebas Neue', sans-serif; font-size: 14rem; color: rgba(255,255,255,.03); line-height: 1; pointer-events: none; }
+  .unis .section-label { color: var(--gold); }
+  .unis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 56px; }
+  .uni-card { background: #1a1a1a; border: 1.5px solid #2a2a2a; border-radius: 10px; padding: 28px 24px; transition: border-color .2s, transform .2s, background .35s; }
+  .dark .uni-card { background: #111; border-color: #222; }
+  .uni-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .uni-siglas { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; margin-bottom: 6px; }
+  .uni-nombre { font-size: 0.8rem; color: #777; margin-bottom: 16px; line-height: 1.4; }
+  .uni-examen { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; padding: 5px 12px; border-radius: 3px; text-transform: uppercase; background: #2a2a2a; color: var(--gold); display: inline-block; }
+
+  /* ── HORARIOS ── */
+  .horarios { padding: 100px 7%; background: var(--cream); transition: background .35s; }
+  .dark .horarios { background: #111; }
+  .horarios-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .schedule-visual { background: #0d0d0d; border-radius: 16px; padding: 40px; color: #f5f0e8; transition: background .35s; }
+  .dark .schedule-visual { background: #050505; border: 1px solid #222; }
+  .schedule-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 30px; color: var(--gold); }
+  .day-row { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid #222; }
+  .day-row:last-child { border-bottom: none; }
+  .day-name { font-weight: 700; font-size: 0.9rem; min-width: 90px; color: #f5f0e8; }
+  .day-time { font-size: 0.85rem; color: #aaa; flex: 1; }
+  .day-badge { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px; text-transform: uppercase; }
+  .badge-open { background: #1a3a1a; color: #5ddc5d; }
+  .badge-closed { background: #2a1a1a; color: #888; }
+  .horarios-info p { color: #555; line-height: 1.8; margin-bottom: 28px; font-size: 1rem; transition: color .3s; }
+  .dark .horarios-info p { color: #aaa; }
+  .features-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+  .features-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.92rem; color: #444; line-height: 1.5; transition: color .3s; }
+  .dark .features-list li { color: #bbb; }
+  .feat-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── WA FLOAT ── */
+  .wa-float { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .wa-tooltip { background: var(--ink); color: var(--cream); font-size: 0.82rem; font-weight: 600; padding: 10px 16px; border-radius: 8px; white-space: nowrap; opacity: 0; transform: translateX(10px); transition: all .3s; pointer-events: none; }
+  .wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+  .wa-btn { width: 60px; height: 60px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; box-shadow: 0 4px 20px rgba(37,211,102,.5); transition: transform .2s, box-shadow .2s; animation: waPulse 2.5s ease-in-out infinite; }
+  .wa-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.7); animation: none; }
+  .wa-btn svg { width: 30px; height: 30px; }
+  @keyframes waPulse { 0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,.5); } 50% { box-shadow: 0 4px 36px rgba(37,211,102,.8), 0 0 0 10px rgba(37,211,102,.1); } }
+
+  /* ── CTA BANNER ── */
+  .cta-banner { padding: 100px 7%; background: var(--accent); text-align: center; position: relative; overflow: hidden; transition: background .35s; }
+  .cta-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(0,0,0,.04) 20px,rgba(0,0,0,.04) 21px); }
+  .cta-banner h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem,5vw,5rem); color: #fff; letter-spacing: 2px; line-height: 1.05; position: relative; z-index: 1; margin-bottom: 20px; }
+  .cta-banner p { color: rgba(255,255,255,.85); font-size: 1.1rem; position: relative; z-index: 1; max-width: 520px; margin: 0 auto 40px; }
+  .btn-white { background: #fff; color: var(--accent); padding: 18px 44px; border-radius: 4px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 4px 4px 0 rgba(0,0,0,.2); transition: transform .2s, box-shadow .2s; position: relative; z-index: 1; }
+  .btn-white:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,.25); }
+
+  /* ── FOOTER ── */
+  footer { background: #080808; color: #666; padding: 48px 7%; text-align: center; font-size: 0.85rem; transition: background .35s; }
+  .dark footer { background: #030303; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 3px; color: #f5f0e8; margin-bottom: 12px; }
+  .footer-logo span { color: var(--accent); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .nav-links li:not(:last-child):not(.toggle-li) { display: none; }
+    .toggle-li { display: flex !important; }
+    .horarios-inner { grid-template-columns: 1fr; }
+    .unis::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">School <span>to</span> Home</a>
+  <ul class="nav-links">
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#universidades">Universidades</a></li>
+    <li><a href="#horarios">Horarios</a></li>
+    <!-- DARK MODE TOGGLE -->
+    <li class="toggle-li">
+      <div class="toggle-wrap">
+        <span class="toggle-icon" id="themeIcon">🌙</span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar modo oscuro/claro"></button>
+        <span style="font-size:0.75rem;font-weight:600;letter-spacing:.5px;color:var(--ink);transition:color .3s" id="themeLabel">Oscuro</span>
+      </div>
+    </li>
+    <li><a href="https://wa.me/525640055147?text=Hola!%20Quiero%20información%20sobre%20los%20cursos%20de%20ingreso" target="_blank" class="nav-cta">Agendar clase</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">📅 Clases los fines de semana</div>
+    <h1>Entra a la<br><em>Universidad</em><br>que quieres.</h1>
+    <p class="hero-sub">Cursos intensivos y asesorías personalizadas para los exámenes de ingreso a las mejores universidades de México. Fines de semana, sin excusas.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/525640055147?text=Hola!%20Me%20interesa%20agendar%20una%20clase%20en%20School%20to%20Home" target="_blank" class="btn-primary">📲 Agendar mi clase</a>
+      <a href="#cursos" class="btn-secondary">Ver cursos →</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">10+</div><div class="stat-label">Universidades cubiertas</div></div>
+      <div><div class="stat-num">Sáb & Dom</div><div class="stat-label">Horarios disponibles</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Personalizado</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <h3>Exámenes que cubrimos</h3>
+      <p>Preparación específica para cada institución</p>
+      <ul class="exam-list">
+        <li class="exam-item"><span class="exam-dot" style="background:#e8401c"></span><span>COMIPEMS</span><small>UNAM / IPN</small></li>
+        <li class="exam-item"><span class="exam-dot" style="background:#1c6ce8"></span><span>EXANI-I / EXANI-II</span><small>CENEVAL</small></li>
+        <li class="exam-item"><span class="exam-dot" style="background:#f0b429"></span><span>EXAUNI / EXATEC</span><small>Privadas</small></li>
+        <li class="exam-item"><span class="exam-dot" style="background:#5ddc5d"></span><span>UAM / UNAM</span><small>Licenciatura</small></li>
+        <li class="exam-item"><span class="exam-dot" style="background:#c87eff"></span><span>Politécnico (IPN)</span><small>CECyT / ESE</small></li>
+      </ul>
+      <div class="weekend-tag">🏠 Clases desde casa o presencial</div>
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS -->
+<section class="cursos" id="cursos">
+  <div class="cursos-header">
+    <div>
+      <div class="section-label">Lo que ofrecemos</div>
+      <h2 class="section-title">Cursos & Asesorías</h2>
+    </div>
+    <a href="https://wa.me/525640055147?text=Hola!%20Quiero%20saber%20más%20sobre%20los%20cursos%20disponibles" target="_blank" class="btn-secondary">Ver disponibilidad →</a>
+  </div>
+  <div class="cursos-grid">
+    <div class="curso-card">
+      <div class="curso-header" style="background:#e8401c"></div>
+      <div class="curso-body">
+        <div class="curso-icon">🎯</div>
+        <div class="curso-name">Curso de Ingreso</div>
+        <p class="curso-desc">Preparación completa e intensiva con todos los temas del examen de admisión. Simulacros incluidos.</p>
+        <div class="curso-tags">
+          <span class="tag tag-red" style="background:#fde8e4;color:#b02a10">Intensivo</span>
+          <span class="tag tag-math" style="background:#e8f0fd;color:#1a4eb0">Fin de semana</span>
+        </div>
+      </div>
+    </div>
+    <div class="curso-card">
+      <div class="curso-header" style="background:#1c6ce8"></div>
+      <div class="curso-body">
+        <div class="curso-icon">📐</div>
+        <div class="curso-name">Matemáticas</div>
+        <p class="curso-desc">Álgebra, geometría, cálculo básico y estadística. Desde nivel secundaria hasta preuniversitario.</p>
+        <div class="curso-tags">
+          <span class="tag tag-math" style="background:#e8f0fd;color:#1a4eb0">Básico</span>
+          <span class="tag tag-math" style="background:#e8f0fd;color:#1a4eb0">Avanzado</span>
+        </div>
+      </div>
+    </div>
+    <div class="curso-card">
+      <div class="curso-header" style="background:#f0b429"></div>
+      <div class="curso-body">
+        <div class="curso-icon">📚</div>
+        <div class="curso-name">Español & Lectura</div>
+        <p class="curso-desc">Comprensión lectora, gramática y redacción. Clave para el puntaje en todos los exámenes de ingreso.</p>
+        <div class="curso-tags">
+          <span class="tag tag-esp" style="background:#fdf6e4;color:#a07010">Comprensión</span>
+          <span class="tag tag-esp" style="background:#fdf6e4;color:#a07010">Redacción</span>
+        </div>
+      </div>
+    </div>
+    <div class="curso-card">
+      <div class="curso-header" style="background:#5ddc5d"></div>
+      <div class="curso-body">
+        <div class="curso-icon">🔬</div>
+        <div class="curso-name">Ciencias</div>
+        <p class="curso-desc">Física, Química y Biología. Explicamos los conceptos difíciles de forma clara con ejemplos prácticos.</p>
+        <div class="curso-tags">
+          <span class="tag tag-sci" style="background:#e4fde8;color:#0f6e1f">Física</span>
+          <span class="tag tag-sci" style="background:#e4fde8;color:#0f6e1f">Química</span>
+          <span class="tag tag-sci" style="background:#e4fde8;color:#0f6e1f">Biología</span>
+        </div>
+      </div>
+    </div>
+    <div class="curso-card">
+      <div class="curso-header" style="background:#c87eff"></div>
+      <div class="curso-body">
+        <div class="curso-icon">🗺️</div>
+        <div class="curso-name">Historia & Geografía</div>
+        <p class="curso-desc">Historia de México y Universal. Geografía nacional. Temas frecuentes en COMIPEMS y EXANI.</p>
+        <div class="curso-tags">
+          <span class="tag tag-his" style="background:#f4e8ff;color:#7b2ab0">COMIPEMS</span>
+          <span class="tag tag-his" style="background:#f4e8ff;color:#7b2ab0">EXANI</span>
+        </div>
+      </div>
+    </div>
+    <div class="curso-card">
+      <div class="curso-header" style="background:#ff7c43"></div>
+      <div class="curso-body">
+        <div class="curso-icon">🧠</div>
+        <div class="curso-name">Asesoría Personalizada</div>
+        <p class="curso-desc">Sesiones 1 a 1 adaptadas a tus puntos débiles. Avanza a tu ritmo con un asesor dedicado.</p>
+        <div class="curso-tags">
+          <span class="tag tag-red" style="background:#fff0ea;color:#b04a10">1 a 1</span>
+          <span class="tag tag-red" style="background:#fff0ea;color:#b04a10">A tu ritmo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIVERSIDADES -->
+<section class="unis" id="universidades">
+  <div class="section-label">Instituciones</div>
+  <h2 class="section-title" style="color:#f5f0e8">Universidades que<br>te preparamos a entrar</h2>
+  <div class="unis-grid">
+    <div class="uni-card"><div class="uni-siglas" style="color:#1c6ce8">UNAM</div><div class="uni-nombre">Universidad Nacional Autónoma de México</div><span class="uni-examen">COMIPEMS / EXANI</span></div>
+    <div class="uni-card"><div class="uni-siglas" style="color:#e8401c">IPN</div><div class="uni-nombre">Instituto Politécnico Nacional</div><span class="uni-examen">COMIPEMS / CECyT</span></div>
+    <div class="uni-card"><div class="uni-siglas" style="color:#f0b429">UAM</div><div class="uni-nombre">Universidad Autónoma Metropolitana</div><span class="uni-examen">Examen propio</span></div>
+    <div class="uni-card"><div class="uni-siglas" style="color:#5ddc5d">TEC</div><div class="uni-nombre">Tecnológico de Monterrey</div><span class="uni-examen">EXATEC / PAEP</span></div>
+    <div class="uni-card"><div class="uni-siglas" style="color:#c87eff">IBERO</div><div class="uni-nombre">Universidad Iberoamericana</div><span class="uni-examen">EXAUNI</span></div>
+    <div class="uni-card"><div class="uni-siglas" style="color:#ff9f43">UP</div><div class="uni-nombre">Universidad Panamericana</div><span class="uni-examen">EXANI-I</span></div>
+    <div class="uni-card"><div class="uni-siglas" style="color:#54a0ff">UAEM</div><div class="uni-nombre">Univ. Autónoma del Estado de México</div><span class="uni-examen">EXANI-I / Propio</span></div>
+    <div class="uni-card"><div class="uni-siglas" style="color:#ff6b81">UVM</div><div class="uni-nombre">Universidad del Valle de México</div><span class="uni-examen">Admisión propia</span></div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="horarios" id="horarios">
+  <div class="horarios-inner">
+    <div class="schedule-visual">
+      <div class="schedule-title">📅 Horario Semanal</div>
+      <div class="day-row"><span class="day-name">Lunes – Vie</span><span class="day-time">Sin clases regulares</span><span class="day-badge badge-closed">Descanso</span></div>
+      <div class="day-row"><span class="day-name">Sábado</span><span class="day-time">9:00 am – 2:00 pm</span><span class="day-badge badge-open">Abierto</span></div>
+      <div class="day-row"><span class="day-name">Sábado</span><span class="day-time">3:00 pm – 7:00 pm</span><span class="day-badge badge-open">Abierto</span></div>
+      <div class="day-row"><span class="day-name">Domingo</span><span class="day-time">10:00 am – 2:00 pm</span><span class="day-badge badge-open">Abierto</span></div>
+      <div class="day-row"><span class="day-name">Domingos</span><span class="day-time">Asesorías intensivas</span><span class="day-badge badge-open">Abierto</span></div>
+    </div>
+    <div class="horarios-info">
+      <div class="section-label">Horarios</div>
+      <h2 class="section-title">Solo fines<br>de semana</h2>
+      <p>Diseñado para estudiantes que entre semana van a la escuela. Aprovecha el fin de semana para prepararte y llegar listo al examen.</p>
+      <ul class="features-list">
+        <li><span class="feat-icon">✅</span> Grupos pequeños para mayor atención</li>
+        <li><span class="feat-icon">✅</span> Clases presenciales y en línea disponibles</li>
+        <li><span class="feat-icon">✅</span> Simulacros de examen incluidos</li>
+        <li><span class="feat-icon">✅</span> Material de estudio proporcionado</li>
+        <li><span class="feat-icon">✅</span> Seguimiento de avance personalizado</li>
+      </ul>
+      <a href="https://wa.me/525640055147?text=Hola!%20Quiero%20agendar%20una%20clase%20en%20School%20to%20Home.%20¿Cuáles%20horarios%20tienen%20disponibles?" target="_blank" class="btn-primary">📲 Ver disponibilidad por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>¿Listo para entrar<br>a tu universidad?</h2>
+  <p>Agenda tu primera sesión hoy. Nuestros asesores te ayudarán a crear un plan de estudio personalizado.</p>
+  <a href="https://wa.me/525640055147?text=Hola!%20Quiero%20agendar%20mi%20primera%20clase%20en%20School%20to%20Home%20🎯" target="_blank" class="btn-white">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    Agendar mi clase gratis
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">School <span>to</span> Home</div>
+  <p>Cursos y asesorías de ingreso · Fines de semana</p>
+  <p style="margin-top:8px">📲 WhatsApp: <a href="https://wa.me/525640055147" target="_blank" style="color:var(--accent);text-decoration:none">564 005 5147</a></p>
+  <p style="margin-top:20px;font-size:0.75rem;color:#444">© 2025 School to Home. Todos los derechos reservados.</p>
+</footer>
+
+<!-- WHATSAPP FLOATING -->
+<div class="wa-float">
+  <div class="wa-tooltip">💬 Agendar clase por WhatsApp</div>
+  <a class="wa-btn" href="https://wa.me/525640055147?text=Hola!%20Vi%20su%20página%20y%20me%20interesa%20agendar%20una%20clase%20en%20School%20to%20Home%20🎯" target="_blank" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const html   = document.documentElement;
+  const icon   = document.getElementById('themeIcon');
+  const label  = document.getElementById('themeLabel');
+
+  // Restore saved preference on load
+  if (localStorage.getItem('theme') === 'dark') applyDark();
+
+  toggle.addEventListener('click', () => {
+    if (html.classList.contains('dark')) {
+      applyLight();
+      localStorage.setItem('theme', 'light');
+    } else {
+      applyDark();
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  function applyDark() {
+    html.classList.add('dark');
+    toggle.classList.add('active');
+    icon.textContent  = '☀️';
+    label.textContent = 'Claro';
+  }
+  function applyLight() {
+    html.classList.remove('dark');
+    toggle.classList.remove('active');
+    icon.textContent  = '🌙';
+    label.textContent = 'Oscuro';
+  }
+</script>
+</body>
+</html>
