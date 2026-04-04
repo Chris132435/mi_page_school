@@ -17,7 +17,9 @@
 % Mejor alineación en columnas tipo X
 \renewcommand\tabularxcolumn[1]{>{\RaggedRight\arraybackslash}p{#1}}
 
-% Logo
+% =========================
+% LOGO SUPERIOR IZQUIERDO
+% =========================
 \makeatletter
 \AddToShipoutPictureFG*{%
   \AtPageUpperLeft{%
@@ -29,6 +31,19 @@
   }%
 }
 \makeatother
+
+% =========================
+% IMAGEN SUPERIOR DERECHA (CORREGIDO)
+% =========================
+\AddToShipoutPictureFG*{%
+  \AtPageUpperLeft{%
+    \put(500,-85){% <-- ajusta este valor si lo quieres mover
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}{%
+        \includegraphics[width=4.0cm]{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}%
+      }{}%
+    }%
+  }%
+}
 
 % Pie de página
 \pagestyle{fancy}
