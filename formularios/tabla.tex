@@ -3,6 +3,32 @@
 \usepackage{amsmath, amssymb}
 \usepackage{enumitem}
 \usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% Configuración de página y encabezados/pies
+\pagestyle{fancy}
+\fancyhf{} % limpia todo
+\fancyfoot[R]{Christian Cristobal Carbajal García} % autor abajo a la derecha
+\renewcommand{\headrulewidth}{0pt} % sin línea en el encabezado
+\renewcommand{\footrulewidth}{0pt} % sin línea en el pie
+
+% Logo opcional en esquina superior izquierda (solo primera página)
+\usepackage{eso-pic}
+\makeatletter
+\AddToShipoutPictureFG*{%
+  \AtPageUpperLeft{%
+    \put(20,-60){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
+        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
+      }{%
+        % Si no existe el archivo, no hace nada (sin error)
+      }%
+    }%
+  }%
+}
+\makeatother
 
 \title{Examen de Física -- Nivel Universitario}
 \author{}
