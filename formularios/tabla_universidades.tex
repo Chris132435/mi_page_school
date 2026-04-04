@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+
+% Paquetes
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{eso-pic}
+\usepackage{tabularx}
+
+\geometry{margin=2.5cm}
+
+% Mejor alineación en columnas tipo X
+\renewcommand\tabularxcolumn[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+% Logo
+\makeatletter
+\AddToShipoutPictureFG*{%
+  \AtPageUpperLeft{%
+    \put(20,-60){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
+        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
+      }{}%
+    }%
+  }%
+}
+\makeatother
+
+% Pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{Christian Cristobal Carbajal García}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\begin{document}
+
+\begin{center}
+\section*{Comparación de Exámenes de Admisión (Ingenierías)}
+\end{center}
+
+\renewcommand{\arraystretch}{1.3}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|p{2.5cm}|p{2cm}|X|X|X|X|}
+\hline
+\textbf{Universidad} & \textbf{Reactivos} & \textbf{Enfoque} & \textbf{Puntaje mínimo} & \textbf{Temario} & \textbf{Evaluación} \\
+\hline
+
+UNAM & 120 & Conocimientos generales de bachillerato & $\sim$90--110+ aciertos (alta demanda) & Matemáticas, Física, Química, Español, Historia & Orden por puntaje (alta competencia) \\
+\hline
+
+IPN & 130--140 & Fuerte enfoque en ciencias exactas & $\sim$75--110+ aciertos & Matemáticas, Física, Química, comprensión lectora, inglés & Evaluación por aciertos (examen técnico) \\
+\hline
+
+UAM & 80 & Aptitudes + conocimientos específicos & Variable (incluye promedio) & Razonamiento matemático, lógico, Física, Química & 70\% examen + 30\% promedio \\
+\hline
+
+TEC de Monterrey & Variable & Evaluación integral del aspirante & Sin mínimo fijo & Matemáticas, lectura, redacción, habilidades cognitivas & Examen + promedio + entrevista + perfil \\
+\hline
+
+\end{tabularx}
+\end{center}
+
+\vspace{0.5cm}
+
+\section*{Diferencias Clave}
+
+\begin{itemize}
+\item \textbf{UNAM:} Examen teórico con alta competencia; requiere alto puntaje para ingeniería.
+\item \textbf{IPN:} Mayor dificultad en áreas científicas; enfoque técnico.
+\item \textbf{UAM:} Evaluación equilibrada entre conocimientos y razonamiento; influye el promedio.
+\item \textbf{TEC de Monterrey:} Proceso integral que considera aspectos académicos y personales.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\section*{Conclusión}
+
+\begin{itemize}
+\item Más exigente en ciencias: IPN
+\item Mayor competencia: UNAM
+\item Evaluación equilibrada: UAM
+\item Enfoque integral: TEC de Monterrey
+\end{itemize}
+
+\end{document}
