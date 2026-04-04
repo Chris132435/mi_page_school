@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\geometry{a4paper, margin=1.5cm}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+\usepackage{booktabs}   % Para tablas profesionales
+\usepackage{longtable}  % Para tablas que pueden ocupar varias páginas
+
+% Configuración de página y encabezados/pies
+\pagestyle{fancy}
+\fancyhf{} % limpia todo
+\fancyfoot[R]{Christian Cristobal Carbajal García} % autor abajo a la derecha
+\renewcommand{\headrulewidth}{1pt} % línea en el encabezado
+\renewcommand{\footrulewidth}{1pt} % línea en el pie
+
+% Logo opcional en esquina superior izquierda (solo primera página)
+\makeatletter
+\AddToShipoutPictureFG*{%
+  \AtPageUpperLeft{%
+    \put(20,-60){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
+        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
+      }{%
+        % Si no existe el archivo, no hace nada (sin error)
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\title{\textbf{Tabla de Constantes Físicas}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+Esta tabla recopila las constantes físicas más utilizadas en diversos campos de la física. Los valores están expresados en unidades del Sistema Internacional (SI), salvo indicación contraria.
+
+\begin{longtable}{p{0.35\textwidth} p{0.2\textwidth} p{0.35\textwidth}}
+\caption{Constantes físicas fundamentales y derivadas}\\
+\toprule
+\textbf{Constante} & \textbf{Símbolo} & \textbf{Valor (unidades)} \\
+\midrule
+\endfirsthead
+
+\multicolumn{3}{c}%
+{{\bfseries \tablename\ \thetable{} -- Continuación}} \\
+\toprule
+\textbf{Constante} & \textbf{Símbolo} & \textbf{Valor (unidades)} \\
+\midrule
+\endhead
+
+\bottomrule
+\multicolumn{3}{r}{{Continúa en la página siguiente}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+% Masa de partículas alfa
+Masa de la partícula $\alpha$ & $m_\alpha$ & $6.6446573357 \times 10^{-27}\ \text{kg}$ \\
+% Constante de masa atómica (unidad de masa atómica unificada)
+Constante de masa atómica & $u$ & $1.66053906660 \times 10^{-27}\ \text{kg}$ \\
+% Unidad atómica de energía (Hartree)
+Unidad atómica de energía & $E_h$ & $4.3597447222071 \times 10^{-18}\ \text{J}$ \\
+% Unidad atómica de fuerza
+Unidad atómica de fuerza & $F_{\text{au}}$ & $8.2387234983 \times 10^{-8}\ \text{N}$ \\
+% Unidad atómica de longitud (radio de Bohr)
+Unidad atómica de longitud & $a_0$ & $5.29177210903 \times 10^{-11}\ \text{m}$ \\
+% Unidad atómica de masa (masa del electrón)
+Unidad atómica de masa & $m_e$ & $9.1093837015 \times 10^{-31}\ \text{kg}$ \\
+% Constante de Avogadro
+Constante de Avogadro & $N_A$ & $6.02214076 \times 10^{23}\ \text{mol}^{-1}$ \\
+% Radio de Bohr
+Radio de Bohr & $a_0$ & $5.29177210903 \times 10^{-11}\ \text{m}$ \\
+% Constante de Boltzmann
+Constante de Boltzmann & $k_B$ & $1.380649 \times 10^{-23}\ \text{J/K}$ \\
+% Radio clásico del electrón
+Radio clásico del electrón & $r_e$ & $2.8179403262 \times 10^{-15}\ \text{m}$ \\
+% Carga elemental
+Carga elemental & $e$ & $1.602176634 \times 10^{-19}\ \text{C}$ \\
+% Masa de la Tierra
+Masa de la Tierra & $M_\oplus$ & $5.9722 \times 10^{24}\ \text{kg}$ \\
+% Radio ecuatorial de la Tierra
+Radio ecuatorial de la Tierra & $R_\oplus$ & $6.3781 \times 10^{6}\ \text{m}$ \\
+% Velocidad orbital media de la Tierra
+Velocidad orbital media de la Tierra & $v_\oplus$ & $2.978 \times 10^{4}\ \text{m/s}$ \\
+% Velocidad angular de rotación de la Tierra
+Velocidad angular de rotación de la Tierra & $\omega_\oplus$ & $7.292115 \times 10^{-5}\ \text{rad/s}$ \\
+% Constante de Faraday
+Constante de Faraday & $F$ & $9.648533212 \times 10^{4}\ \text{C/mol}$ \\
+% Constante de los gases ideales
+Constante de los gases ideales & $R$ & $8.314462618 \ \text{J/(mol·K)}$ \\
+% Constante de masa molar
+Constante de masa molar & $M_u$ & $1 \times 10^{-3}\ \text{kg/mol}$ \\
+% Volumen molar del gas ideal (0°C, 1 atm)
+Volumen molar del gas ideal & $V_m$ & $2.241396 \times 10^{-2}\ \text{m}^3/\text{mol}$ \\
+% Masa del neutrón
+Masa del neutrón & $m_n$ & $1.674927498 \times 10^{-27}\ \text{kg}$ \\
+% Constante de Newton de gravitación
+Constante de gravitación universal & $G$ & $6.67430 \times 10^{-11}\ \text{m}^3\ \text{kg}^{-1}\ \text{s}^{-2}$ \\
+% Constante de Planck
+Constante de Planck & $h$ & $6.62607015 \times 10^{-34}\ \text{J·s}$ \\
+% Masa de Planck
+Masa de Planck & $m_P$ & $2.176434 \times 10^{-8}\ \text{kg}$ \\
+% Masa del protón
+Masa del protón & $m_p$ & $1.67262192369 \times 10^{-27}\ \text{kg}$ \\
+% Relación masa protón-electrón
+Relación masa protón-electrón & $m_p/m_e$ & $1836.15267343$ \\
+% Velocidad de la luz en el vacío
+Velocidad de la luz en el vacío & $c$ & $2.99792458 \times 10^{8}\ \text{m/s}$ \\
+% Aceleración normal de la gravedad
+Aceleración normal de la gravedad & $g_n$ & $9.80665\ \text{m/s}^2$ \\
+% Atmósfera estándar
+Atmósfera estándar & $1\ \text{atm}$ & $1.01325 \times 10^{5}\ \text{Pa}$ \\
+% Referencia estándar de intensidad de sonido
+Intensidad de referencia (sonido) & $I_0$ & $1 \times 10^{-12}\ \text{W/m}^2$ \\
+% Constante de Stefan-Boltzmann
+Constante de Stefan-Boltzmann & $\sigma$ & $5.670374419 \times 10^{-8}\ \text{W·m}^{-2}\ \text{K}^{-4}$ \\
+\end{longtable}
+
+\vspace{1cm}
+\noindent
+\textbf{Nota:} Los valores corresponden a las recomendaciones CODATA 2018 y ajustes posteriores (2022). Las constantes definidas exactamente (como $c$, $h$, $e$, $k_B$, $N_A$) tienen valores fijos desde la redefinición del SI en 2019.
+
+\end{document}

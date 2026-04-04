@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>School to Home | Cursos y Asesorías de Ingreso</title>
+<title>∫chool tΩ H₂Ome | Cursos y Asesorías de Ingreso</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -148,6 +148,97 @@
   .dark .tag-his  { background: #1e1030 !important; color: #b87eff !important; }
   .dark .tag-red  { background: #2a1208 !important; color: #ff8860 !important; }
 
+  /* ── LOGO MATEMÁTICO ── */
+  .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; letter-spacing: 1px; color: var(--ink); text-decoration: none; transition: color .3s; line-height: 1; display: inline-flex; align-items: baseline; gap: 1px; }
+  .logo-sym   { color: var(--accent); }
+  .logo-omega { color: var(--accent2); }
+  .logo-sub   { font-size: .85rem; vertical-align: sub; color: var(--accent); line-height: 0; }
+  .logo-to    { color: #888; font-size: 1.1rem; }
+
+  /* ── RECURSOS ── */
+  .recursos { padding: 100px 7%; background: var(--cream); transition: background .35s; }
+  .dark .recursos { background: #0e0e0e; }
+  .recursos-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 24px; }
+  .recursos-filter { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 44px; }
+  .filter-btn {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    padding: 8px 18px; border-radius: 999px; cursor: pointer; border: 1.5px solid #ccc;
+    background: transparent; color: #777; transition: all .2s;
+  }
+  .filter-btn:hover, .filter-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .dark .filter-btn { border-color: #333; color: #888; }
+  .dark .filter-btn:hover, .dark .filter-btn.active { background: #f0ece4; color: #111; border-color: #f0ece4; }
+
+  .recursos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+
+  .recurso-card {
+    background: var(--light); border: 1.5px solid #e0dbd2;
+    border-radius: 14px; padding: 24px;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: transform .25s, box-shadow .25s, background .35s, border-color .35s, opacity .3s;
+    position: relative; overflow: hidden;
+  }
+  .dark .recurso-card { background: #1a1a1a; border-color: #2a2a2a; }
+  .recurso-card:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(0,0,0,.1); }
+  .dark .recurso-card:hover { box-shadow: 0 16px 36px rgba(0,0,0,.45); }
+  .recurso-card.hidden { display: none; }
+
+  .recurso-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .rc-mat::before    { background: #1c6ce8; }
+  .rc-esp::before    { background: #f0b429; }
+  .rc-sci::before    { background: #5ddc5d; }
+  .rc-his::before    { background: #c87eff; }
+  .rc-ingreso::before{ background: #e8401c; }
+  .rc-tabla::before  { background: #ff9f43; }
+
+  .recurso-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+  .recurso-icon-wrap { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+  .ri-mat { background: #e8f0fd; } .ri-esp { background: #fdf6e4; } .ri-sci { background: #e4fde8; }
+  .ri-his { background: #f4e8ff; } .ri-ing { background: #fde8e4; } .ri-tab { background: #fff0e0; }
+  .dark .ri-mat { background: #1a2540; } .dark .ri-esp { background: #2a2010; } .dark .ri-sci { background: #0f2a15; }
+  .dark .ri-his { background: #1e1030; } .dark .ri-ing { background: #2a1208; } .dark .ri-tab { background: #2a1a08; }
+
+  .recurso-tipo { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; white-space: nowrap; }
+  .tipo-pdf   { background: #fde8e4; color: #b02a10; }
+  .tipo-tabla { background: #e8f0fd; color: #1a4eb0; }
+  .tipo-ejerc { background: #e4fde8; color: #0f6e1f; }
+  .tipo-guia  { background: #fdf6e4; color: #a07010; }
+  .tipo-pronto{ background: #f0f0f0; color: #aaa; }
+  .dark .tipo-pdf   { background: #2a1208; color: #ff8860; }
+  .dark .tipo-tabla { background: #1a2540; color: #6aadff; }
+  .dark .tipo-ejerc { background: #0f2a15; color: #5ddc5d; }
+  .dark .tipo-guia  { background: #2a2010; color: #d4a030; }
+  .dark .tipo-pronto{ background: #222; color: #555; }
+
+  .recurso-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: .5px; color: var(--ink); transition: color .3s; line-height: 1.2; }
+  .recurso-desc { font-size: 0.82rem; color: #777; line-height: 1.6; transition: color .3s; }
+  .dark .recurso-desc { color: #888; }
+  .recurso-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 14px; border-top: 1px solid #e8e2d8; transition: border-color .3s; }
+  .dark .recurso-footer { border-color: #2a2a2a; }
+  .recurso-meta { font-size: 0.75rem; color: #aaa; display: flex; align-items: center; gap: 6px; }
+  .recurso-download {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: .5px;
+    padding: 7px 14px; border-radius: 6px; text-decoration: none;
+    background: var(--ink); color: var(--cream);
+    transition: background .2s, transform .15s;
+  }
+  .recurso-download:hover { background: var(--accent); transform: scale(1.04); }
+  .recurso-download.pronto { background: #e0e0e0; color: #aaa; cursor: default; pointer-events: none; }
+  .dark .recurso-download.pronto { background: #222; color: #555; }
+
+  .coming-banner {
+    margin-top: 48px; padding: 28px 32px;
+    border: 1.5px dashed #ccc; border-radius: 14px;
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    transition: border-color .35s;
+  }
+  .dark .coming-banner { border-color: #333; }
+  .coming-banner-icon { font-size: 2.4rem; flex-shrink: 0; }
+  .coming-banner p { font-size: 0.9rem; color: #777; line-height: 1.7; transition: color .3s; }
+  .dark .coming-banner p { color: #888; }
+  .coming-banner strong { color: var(--ink); transition: color .3s; }
+
   /* ── UNIVERSIDADES ── */
   .unis { padding: 100px 7%; background: #0d0d0d; color: #f5f0e8; overflow: hidden; position: relative; transition: background .35s; }
   .dark .unis { background: #080808; }
@@ -221,11 +312,12 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">School <span>to</span> Home</a>
+  <a href="#" class="logo-text"><span class="logo-sym">∫</span>chool<span class="logo-to"> t</span><span class="logo-omega">Ω</span><span class="logo-to"> H</span><span class="logo-sub">₂</span>Ome</a>
   <ul class="nav-links">
     <li><a href="#cursos">Cursos</a></li>
     <li><a href="#universidades">Universidades</a></li>
     <li><a href="#horarios">Horarios</a></li>
+    <li><a href="#recursos">Recursos</a></li>
     <!-- DARK MODE TOGGLE -->
     <li class="toggle-li">
       <div class="toggle-wrap">
@@ -399,6 +491,206 @@
   </div>
 </section>
 
+<!-- RECURSOS -->
+<section class="recursos" id="recursos">
+  <div class="recursos-header">
+    <div>
+      <div class="section-label">Material de estudio</div>
+      <h2 class="section-title">Recursos</h2>
+    </div>
+    <a href="https://wa.me/525640055147?text=Hola!%20Quiero%20recibir%20los%20recursos%20de%20estudio%20de%20∫chool%20tΩ%20H₂Ome" target="_blank" class="btn-secondary">Pedir material →</a>
+  </div>
+
+  <!-- Filtros -->
+  <div class="recursos-filter">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="mat">📐 Matemáticas</button>
+    <button class="filter-btn" data-filter="esp">📚 Español</button>
+    <button class="filter-btn" data-filter="sci">🔬 Ciencias</button>
+    <button class="filter-btn" data-filter="his">🗺️ Historia</button>
+    <button class="filter-btn" data-filter="ingreso">🎯 Ingreso</button>
+    <button class="filter-btn" data-filter="tabla">📊 Tablas</button>
+  </div>
+
+  <!-- Tarjetas de recursos -->
+  <div class="recursos-grid">
+
+    <!-- MATEMÁTICAS -->
+    <div class="recurso-card rc-mat" data-cat="mat">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-mat">📐</div>
+        <span class="recurso-tipo tipo-guia">Guía</span>
+      </div>
+      <div class="recurso-name">Álgebra Básica — Resumen completo</div>
+      <p class="recurso-desc">Factorización, ecuaciones de 1° y 2° grado, sistemas de ecuaciones. Ideal para COMIPEMS.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 12 págs.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <div class="recurso-card rc-mat" data-cat="mat">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-mat">✏️</div>
+        <span class="recurso-tipo tipo-ejerc">Ejercicios</span>
+      </div>
+      <div class="recurso-name">Geometría — 50 Ejercicios con solución</div>
+      <p class="recurso-desc">Perímetro, área, volumen y ángulos. Soluciones detalladas paso a paso al final.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 20 págs.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <div class="recurso-card rc-tabla" data-cat="tabla mat">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-tab">📊</div>
+        <span class="recurso-tipo tipo-tabla">Tabla</span>
+      </div>
+      <div class="recurso-name">Fórmulas de Geometría — Tabla de bolsillo</div>
+      <p class="recurso-desc">Todas las fórmulas de área, perímetro y volumen en una sola hoja. Imprimible.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 1 pág.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <!-- ESPAÑOL -->
+    <div class="recurso-card rc-esp" data-cat="esp">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-esp">📚</div>
+        <span class="recurso-tipo tipo-guia">Guía</span>
+      </div>
+      <div class="recurso-name">Comprensión Lectora — Técnicas clave</div>
+      <p class="recurso-desc">Estrategias para responder rápido: idea principal, inferencias y vocabulario en contexto.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 8 págs.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <div class="recurso-card rc-esp" data-cat="esp">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-esp">✍️</div>
+        <span class="recurso-tipo tipo-ejerc">Ejercicios</span>
+      </div>
+      <div class="recurso-name">Gramática y Ortografía — Práctica intensiva</div>
+      <p class="recurso-desc">Reglas de acentuación, puntuación, uso de verbos y sinónimos frecuentes en exámenes.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 16 págs.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <!-- CIENCIAS -->
+    <div class="recurso-card rc-sci" data-cat="sci">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-sci">⚗️</div>
+        <span class="recurso-tipo tipo-tabla">Tabla</span>
+      </div>
+      <div class="recurso-name">Tabla Periódica — Versión estudio</div>
+      <p class="recurso-desc">Con número atómico, masa, valencia y grupos. Anotaciones para memorizar rápido.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 1 pág.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <div class="recurso-card rc-sci" data-cat="sci">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-sci">🔬</div>
+        <span class="recurso-tipo tipo-guia">Guía</span>
+      </div>
+      <div class="recurso-name">Física — Leyes y Fórmulas esenciales</div>
+      <p class="recurso-desc">Cinemática, dinámica, energía y ondas. Todo lo que cae en el COMIPEMS e IPN.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 10 págs.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <!-- HISTORIA -->
+    <div class="recurso-card rc-his" data-cat="his">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-his">🗺️</div>
+        <span class="recurso-tipo tipo-guia">Guía</span>
+      </div>
+      <div class="recurso-name">Historia de México — Línea del tiempo</div>
+      <p class="recurso-desc">Desde la época prehispánica hasta el México contemporáneo. Fechas y eventos clave.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 6 págs.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <!-- INGRESO -->
+    <div class="recurso-card rc-ingreso" data-cat="ingreso">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-ing">🎯</div>
+        <span class="recurso-tipo tipo-ejerc">Simulacro</span>
+      </div>
+      <div class="recurso-name">Simulacro COMIPEMS — Examen completo</div>
+      <p class="recurso-desc">128 reactivos tipo COMIPEMS con clave de respuestas. Cronometrado para práctica real.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 32 págs.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <div class="recurso-card rc-ingreso" data-cat="ingreso">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-ing">📋</div>
+        <span class="recurso-tipo tipo-pronto">Próximamente</span>
+      </div>
+      <div class="recurso-name">Simulacro EXANI-I — 2025</div>
+      <p class="recurso-desc">Próximamente disponible. Escríbenos por WhatsApp para recibirlo cuando esté listo.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">🔒 Próximamente</span>
+        <span class="recurso-download pronto">⬇ Pronto</span>
+      </div>
+    </div>
+
+    <div class="recurso-card rc-tabla" data-cat="tabla ingreso">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-tab">📊</div>
+        <span class="recurso-tipo tipo-tabla">Tabla</span>
+      </div>
+      <div class="recurso-name">Comparativo de Exámenes por Universidad</div>
+      <p class="recurso-desc">Número de reactivos, tiempo, materias y puntaje mínimo de cada institución.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">📄 PDF · 2 págs.</span>
+        <a href="#" class="recurso-download">⬇ Descargar</a>
+      </div>
+    </div>
+
+    <div class="recurso-card rc-mat rc-sci" data-cat="mat sci tabla">
+      <div class="recurso-top">
+        <div class="recurso-icon-wrap ri-tab">🧮</div>
+        <span class="recurso-tipo tipo-pronto">Próximamente</span>
+      </div>
+      <div class="recurso-name">Paquete Ciencias Exactas — Completo</div>
+      <p class="recurso-desc">Guía unificada de Matemáticas, Física y Química para UNAM, IPN y TEC. En preparación.</p>
+      <div class="recurso-footer">
+        <span class="recurso-meta">🔒 Próximamente</span>
+        <span class="recurso-download pronto">⬇ Pronto</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Banner informativo -->
+  <div class="coming-banner">
+    <div class="coming-banner-icon">📬</div>
+    <p><strong>¿Necesitas un material específico?</strong><br>
+    Estamos agregando guías, tablas y ejercicios constantemente. Si buscas algo en particular o quieres recibir los nuevos recursos directo en tu celular, escríbenos por WhatsApp y te lo enviamos.
+    <br><br>
+    <a href="https://wa.me/525640055147?text=Hola!%20Quiero%20recibir%20recursos%20de%20estudio%20de%20∫chool%20tΩ%20H₂Ome" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-size:0.85rem;padding:12px 24px;">
+      📲 Recibir recursos por WhatsApp
+    </a>
+    </p>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <section class="cta-banner">
   <h2>¿Listo para entrar<br>a tu universidad?</h2>
@@ -411,7 +703,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">School <span>to</span> Home</div>
+  <div class="footer-logo"><span style="color:var(--accent)">∫</span>chool t<span style="color:#1c6ce8">Ω</span> H<span style="font-size:1.3rem;vertical-align:sub;color:var(--accent)">₂</span>Ome</div>
   <p>Cursos y asesorías de ingreso · Fines de semana</p>
   <p style="margin-top:8px">📲 WhatsApp: <a href="https://wa.me/525640055147" target="_blank" style="color:var(--accent);text-decoration:none">564 005 5147</a></p>
   <p style="margin-top:20px;font-size:0.75rem;color:#444">© 2025 School to Home. Todos los derechos reservados.</p>
@@ -456,6 +748,22 @@
     icon.textContent  = '🌙';
     label.textContent = 'Oscuro';
   }
+
+  // ── FILTRO RECURSOS ──
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.filter;
+      document.querySelectorAll('.recurso-card').forEach(card => {
+        if (cat === 'all' || card.dataset.cat.includes(cat)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
 </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb}
 \usepackage[spanish]{babel}
@@ -8,13 +8,15 @@
 \usepackage{fancyhdr}
 \usepackage{eso-pic}
 \usepackage{graphicx}
+\usepackage{multicol}      % Para dos columnas
+\usepackage{booktabs}      % Opcional, mejora tablas
 
 % Configuración de página y encabezados/pies
 \pagestyle{fancy}
 \fancyhf{} % limpia todo
 \fancyfoot[R]{Christian Cristobal Carbajal García} % autor abajo a la derecha
-\renewcommand{\headrulewidth}{1pt} % línea en el encabezado
-\renewcommand{\footrulewidth}{1pt} % línea en el pie
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
 
 % Logo opcional en esquina superior izquierda (solo primera página)
 \makeatletter
@@ -24,39 +26,7 @@
       \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
         \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
       }{%
-        % Si no existe el archivo, no hace nada (sin error)
-      }%
-    }%
-  }%
-}
-\makeatother
-
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb}
-\usepackage[spanish]{babel}
-\usepackage{enumitem}
-\usepackage{geometry}
-\geometry{a4paper, margin=1.5cm}
-\usepackage{fancyhdr}
-\usepackage{eso-pic}
-\usepackage{graphicx}
-
-% Configuración de página y encabezados/pies
-\pagestyle{fancy}
-\fancyhf{} % limpia todo
-\fancyfoot[R]{Christian Cristobal Carbajal García} % autor abajo a la derecha
-\renewcommand{\headrulewidth}{1pt} % línea en el encabezado
-\renewcommand{\footrulewidth}{1pt} % línea en el pie
-
-% Logo opcional en esquina superior izquierda (solo primera página)
-\makeatletter
-\AddToShipoutPictureFG*{%
-  \AtPageUpperLeft{%
-    \put(20,-60){%
-      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
-        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
-      }{%
-        % Si no existe el archivo, no hace nada (sin error)
+        % Si no existe, no hace nada
       }%
     }%
   }%
@@ -71,16 +41,19 @@
 
 \maketitle
 
+% Inicio de dos columnas
+\begin{multicols}{2}
+
 \section*{Cinemática}
 
-\subsection*{Movimiento en línea recta con aceleración constante}
+\subsection*{Movimiento en línea recta con \(a\) cte}
 \begin{align*}
     v &= v_0 + a t \\
-    x &= x_0 + v_0 t + \frac{1}{2} a t^2 \\
+    x &= x_0 + v_0 t + \tfrac{1}{2} a t^2 \\
     v^2 &= v_0^2 + 2a (x - x_0)
 \end{align*}
 
-\subsection*{Función de distancia (MRU)}
+\subsection*{MRU (distancia)}
 \[
 x = x_0 + v t
 \]
@@ -88,90 +61,90 @@ x = x_0 + v t
 \subsection*{Caída libre desde altura \(h\)}
 \begin{align*}
     v &= g t \\
-    h &= \frac{1}{2} g t^2 \\
+    h &= \tfrac{1}{2} g t^2 \\
     v^2 &= 2 g h
 \end{align*}
 
-\subsection*{Movimiento vertical de proyectiles (lanzamiento hacia arriba)}
+\subsection*{Lanzamiento vertical hacia arriba}
 \begin{align*}
-    y &= y_0 + v_0 t - \frac{1}{2} g t^2 \\
+    y &= y_0 + v_0 t - \tfrac{1}{2} g t^2 \\
     v &= v_0 - g t \\
     v^2 &= v_0^2 - 2g (y - y_0)
 \end{align*}
 
-\subsection*{Tiro parabólico (completo)}
+\subsection*{Tiro parabólico completo}
 \begin{align*}
-    \text{Alcance: } R &= \frac{v_0^2 \sen(2\theta)}{g} \\
-    \text{Altura máxima: } H &= \frac{v_0^2 \sen^2\theta}{2g} \\
-    \text{Tiempo de vuelo: } T &= \frac{2 v_0 \sen\theta}{g}
+    R &= \frac{v_0^2 \sen(2\theta)}{g} \\
+    H &= \frac{v_0^2 \sen^2\theta}{2g} \\
+    T &= \frac{2 v_0 \sen\theta}{g}
 \end{align*}
 
 \subsection*{Movimiento horizontal de proyectiles}
 \begin{align*}
     x &= v_0 t \\
-    y &= \frac{1}{2} g t^2
+    y &= \tfrac{1}{2} g t^2
 \end{align*}
 
-\subsection*{Movimiento en plano inclinado (sin fricción)}
+\subsection*{Plano inclinado (sin fricción)}
 \begin{align*}
     a &= g \sen\theta \\
-    v^2 &= 2 g \sen\theta \, d \quad (\text{partiendo del reposo})
+    v^2 &= 2 g \sen\theta \, d
 \end{align*}
 
 \subsection*{Movimiento circular uniforme}
 \begin{align*}
     v &= \omega R \\
     a_c &= \frac{v^2}{R} = \omega^2 R \\
-    T &= \frac{2\pi}{\omega}, \quad f = \frac{1}{T}
+    T &= \frac{2\pi}{\omega},\quad f = \frac{1}{T}
 \end{align*}
 
 \subsection*{Fuerza centrípeta}
 \[
-F_c = m a_c = m \frac{v^2}{R} = m \omega^2 R
+F_c = m \frac{v^2}{R} = m \omega^2 R
 \]
 
-\subsection*{Aceleración constante en movimiento circular (aceleración angular constante)}
+\subsection*{Aceleración angular constante}
 \begin{align*}
     \omega &= \omega_0 + \alpha t \\
-    \theta &= \theta_0 + \omega_0 t + \frac{1}{2} \alpha t^2 \\
+    \theta &= \theta_0 + \omega_0 t + \tfrac{1}{2} \alpha t^2 \\
     \omega^2 &= \omega_0^2 + 2\alpha (\theta - \theta_0)
 \end{align*}
 
-\subsection*{Aceleración circular (tangencial y centrípeta)}
+\subsection*{Aceleración tangencial y centrípeta}
 \[
-\vec{a} = \vec{a}_t + \vec{a}_c, \quad a_t = \alpha R, \quad a_c = \omega^2 R
+\vec{a} = \vec{a}_t + \vec{a}_c,\quad a_t = \alpha R,\quad a_c = \omega^2 R
 \]
 
 \section*{Dinámica}
 
 \subsection*{Leyes de Newton}
 \begin{align*}
-    \text{1ª Ley:} & \quad \sum \vec{F} = 0 \Rightarrow \vec{v} = \text{constante} \\
-    \text{2ª Ley:} & \quad \sum \vec{F} = m \vec{a} \\
-    \text{3ª Ley:} & \quad \vec{F}_{12} = -\vec{F}_{21}
+    \text{1ª: } & \sum \vec{F}=0 \Rightarrow \vec{v}=cte \\
+    \text{2ª: } & \sum \vec{F}=m\vec{a} \\
+    \text{3ª: } & \vec{F}_{12}=-\vec{F}_{21}
 \end{align*}
 
-\subsection*{Fuerza de fricción (cinética y estática)}
+\subsection*{Fricción}
 \[
-f_k = \mu_k N, \qquad f_s^{\max} = \mu_s N
+f_k = \mu_k N,\qquad f_s^{\max} = \mu_s N
 \]
 
-\subsection*{Ley de Hooke (fuerza elástica)}
+\subsection*{Ley de Hooke}
 \[
 F = -k x
 \]
 
-\subsection*{Fuerza gravitacional (atracción universal)}
+\subsection*{Ley de gravitación universal}
 \[
-F_g = G \frac{m_1 m_2}{r^2}, \quad G = 6.67\times10^{-11}\,\text{N·m}^2/\text{kg}^2
+F_g = G \frac{m_1 m_2}{r^2},\quad G = 6.67\times10^{-11}
 \]
 
-\subsection*{Aceleración de gravedad (en la superficie de un planeta)}
+\subsection*{Aceleración de gravedad}
 \[
 g = \frac{G M}{R^2}
 \]
 
-\subsection*{Peso (fuerza de gravedad)}
+\subsection*{Peso}
 \[
 \vec{P} = m \vec{g}
 \]
@@ -190,67 +163,65 @@ P = \frac{W}{\Delta t} = \vec{F} \cdot \vec{v}
 
 \subsection*{Energía cinética}
 \[
-K = \frac{1}{2} m v^2
+K = \tfrac{1}{2} m v^2
 \]
 
-\subsection*{Energía cinética de un cuerpo en rotación masiva}
+\subsection*{Energía cinética de rotación}
 \[
-K_{\text{rot}} = \frac{1}{2} I \omega^2
+K_{\text{rot}} = \tfrac{1}{2} I \omega^2
 \]
 
-\subsection*{Principio trabajo – energía}
+\subsection*{Teorema trabajo–energía}
 \[
-W_{\text{neto}} = \Delta K = K_f - K_i
+W_{\text{neto}} = \Delta K
 \]
 
-\subsection*{Energía potencial gravitatoria (cerca de la superficie)}
+\subsection*{Energía potencial gravitatoria}
 \[
 U = m g h
 \]
 
 \subsection*{Energía potencial elástica}
 \[
-U_e = \frac{1}{2} k x^2
+U_e = \tfrac{1}{2} k x^2
 \]
 
-\subsection*{Conservación de la energía mecánica (sin fuerzas no conservativas)}
+\subsection*{Conservación de la energía mecánica}
 \[
 E_m = K + U = \text{constante}
 \]
 
 \section*{Cantidad de Movimiento y Colisiones}
 
-\subsection*{Momento lineal (cantidad de movimiento)}
+\subsection*{Momento lineal}
 \[
 \vec{p} = m \vec{v}
 \]
 
-\subsection*{Ley de conservación del momento lineal}
+\subsection*{Conservación del momento lineal}
 \[
 \sum \vec{p}_{\text{inicial}} = \sum \vec{p}_{\text{final}}
 \]
 
-\subsection*{Colisión elástica (conservación de energía cinética y momento)}
-\[
-m_1 v_{1i} + m_2 v_{2i} = m_1 v_{1f} + m_2 v_{2f}
-\]
-\[
-\frac{1}{2}m_1 v_{1i}^2 + \frac{1}{2}m_2 v_{2i}^2 = \frac{1}{2}m_1 v_{1f}^2 + \frac{1}{2}m_2 v_{2f}^2
-\]
+\subsection*{Colisión elástica (1D)}
+\begin{align*}
+    m_1 v_{1i} + m_2 v_{2i} &= m_1 v_{1f} + m_2 v_{2f} \\
+    \tfrac{1}{2}m_1 v_{1i}^2 + \tfrac{1}{2}m_2 v_{2i}^2 &= \tfrac{1}{2}m_1 v_{1f}^2 + \tfrac{1}{2}m_2 v_{2f}^2
+\end{align*}
 
-\subsection*{Colisión inelástica (solo momento, se pierde energía)}
+\subsection*{Colisión perfectamente inelástica}
 \[
-m_1 v_{1i} + m_2 v_{2i} = (m_1 + m_2) V_f \quad (\text{perfectamente inelástica})
+m_1 v_{1i} + m_2 v_{2i} = (m_1+m_2) V_f
 \]
 
 \section*{Dinámica de Rotación}
 
-\subsection*{Momento de inercia (casos comunes)}
+\subsection*{Momentos de inercia}
 \begin{align*}
-    \text{Anillo o aro: } & I = M R^2 \\
-    \text{Disco sólido: } & I = \frac{1}{2} M R^2 \\
-    \text{Barra delgada (centro): } & I = \frac{1}{12} M L^2 \\
-    \text{Esfera sólida: } & I = \frac{2}{5} M R^2
+    \text{Anillo: } & I = M R^2 \\
+    \text{Disco: } & I = \tfrac{1}{2} M R^2 \\
+    \text{Barra (centro): } & I = \tfrac{1}{12} M L^2 \\
+    \text{Esfera sólida: } & I = \tfrac{2}{5} M R^2
 \end{align*}
 
 \subsection*{Momento angular}
@@ -258,9 +229,9 @@ m_1 v_{1i} + m_2 v_{2i} = (m_1 + m_2) V_f \quad (\text{perfectamente inelástica
 \vec{L} = I \vec{\omega}
 \]
 
-\subsection*{Torque o momento de fuerza}
+\subsection*{Torque}
 \[
-\vec{\tau} = \vec{r} \times \vec{F}, \qquad \tau = I \alpha
+\vec{\tau} = \vec{r} \times \vec{F},\qquad \tau = I \alpha
 \]
 
 \subsection*{Conservación del momento angular}
@@ -268,9 +239,9 @@ m_1 v_{1i} + m_2 v_{2i} = (m_1 + m_2) V_f \quad (\text{perfectamente inelástica
 \sum \vec{L}_{\text{inicial}} = \sum \vec{L}_{\text{final}}
 \]
 
-\subsection*{Aplicación del momento angular (precesión, giroscopios)}
+\subsection*{Precesión}
 \[
-\Omega_p = \frac{\tau}{L} \quad (\text{frecuencia de precesión})
+\Omega_p = \frac{\tau}{L}
 \]
 
 \section*{Fluidos}
@@ -287,7 +258,9 @@ P = \frac{F}{A}
 
 \subsection*{Principio de Pascal}
 \[
-\Delta P = \frac{F_1}{A_1} = \frac{F_2}{A_2} \quad \Rightarrow \quad F_2 = F_1 \frac{A_2}{A_1}
+\frac{F_1}{A_1} = \frac{F_2}{A_2} \quad\Rightarrow\quad F_2 = F_1 \frac{A_2}{A_1}
 \]
+
+\end{multicols}
 
 \end{document}
