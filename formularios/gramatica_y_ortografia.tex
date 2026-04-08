@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper]{article}
+
+% Paquetes necesarios
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{graphicx}       % Para logos
+\usepackage{eso-pic}        % Para posicionar logos
+\usepackage{fancyhdr}       % Para pie de página
+
+% Configuración de títulos
+\titleformat{\section}{\large\bfseries\color{blue!70!black}}{}{0em}{}[\titlerule]
+
+% Configuración de página y encabezados/pies
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{Christian Cristobal Carbajal García}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% Logos (solo primera página)
+\makeatletter
+\AddToShipoutPictureFG*{%
+  \AtPageUpperLeft{%
+    \put(20,-60){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
+        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
+      }{}%
+    }%
+  }%
+  \AtPageUpperLeft{%
+    \put(470,-85){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}{%
+        \includegraphics[width=4.0cm]{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}%
+      }{}%
+    }%
+  }%
+}
+\makeatother
+
+\title{\textbf{Manual de Comprensión, Gramática y Ortografía}}
+\author{Preparación para Exámenes de Alto Rendimiento}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Gramática y Ortografía: Práctica Intensiva}
+
+Para dominar la escritura no basta con leer; hay que analizar la estructura del lenguaje de forma activa.
+
+\begin{description}
+    \item[Conciencia Fonológica:] El uso correcto de tildes según las reglas de agudas, graves y esdrújulas.
+    \item[Sintaxis Crítica:] La revisión sistemática de la concordancia entre sujeto y predicado.
+    \item[Puntuación Estructural:] Uso de la coma para separar elementos subordinados y el punto para separar ideas independientes.
+\end{description}
+
+\section{Lecturas Recomendadas para Práctica de Técnicas}
+
+Aplica el método \textbf{SQ3R} y el \textbf{Recuerdo Activo} en los siguientes tipos de textos. Estas lecturas están seleccionadas por su densidad y riqueza gramatical:
+
+\begin{tcolorbox}[colframe=blue!50!black, colback=white, title=1. Ensayos Científicos y Divulgación]
+    \textbf{Sugerencia:} Artículos de revistas como \textit{Investigación y Ciencia} o \textit{Nature} (en español).
+    \begin{itemize}
+        \item \textbf{Por qué:} Poseen una estructura lógica impecable y vocabulario técnico que desafía la ortografía visual.
+    \end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colframe=green!50!black, colback=white, title=2. Literatura Clásica (Análisis de Sintaxis)]
+    \textbf{Sugerencia:} Cuentos de Jorge Luis Borges (ej. \textit{El Aleph}) o ensayos de Octavio Paz.
+    \begin{itemize}
+        \item \textbf{Por qué:} La complejidad de sus oraciones es perfecta para practicar el \textbf{Chunking} (fragmentación) y entender el uso avanzado de la puntuación.
+    \end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colframe=orange!50!black, colback=white, title=3. Textos Jurídicos o Administrativos]
+    \textbf{Sugerencia:} La Constitución o Leyes Orgánicas.
+    \begin{itemize}
+        \item \textbf{Por qué:} Son los textos más difíciles de procesar. Ideales para aplicar \textbf{Interrogación Elaborativa} (preguntarse el porqué de cada norma).
+    \end{itemize}
+\end{tcolorbox}
+
+\section{Consejo Final para el Examen}
+Durante la prueba, realiza una \textbf{Lectura de Rastreo} inicial para detectar errores ortográficos obvios antes de profundizar en el análisis lógico de las preguntas.
+
+\end{document}
