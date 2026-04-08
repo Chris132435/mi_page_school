@@ -1,0 +1,125 @@
+\documentclass[12pt,a4paper]{article}
+
+% Paquetes necesarios
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Configuración estética
+\titleformat{\section}{\large\bfseries\color{blue!70!black}}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries\color{blue!40!black}}{}{0em}{}
+
+% Configuración de página y encabezados/pies
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{Christian Cristobal Carbajal García}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% Logos (solo primera página)
+\makeatletter
+\AddToShipoutPictureFG*{%
+  \AtPageUpperLeft{%
+    \put(20,-60){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
+        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
+      }{}%
+    }%
+  }%
+  \AtPageUpperLeft{%
+    \put(470,-85){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}{%
+        \includegraphics[width=4.0cm]{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}%
+      }{}%
+    }%
+  }%
+}
+\makeatother
+
+\title{\textbf{Guía de Historia de México}}
+\author{Línea del tiempo: eventos clave}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introducción}
+Esta guía presenta una síntesis cronológica de los acontecimientos más importantes de la historia de México, desde la época prehispánica hasta el México contemporáneo. Utiliza esta línea del tiempo para practicar técnicas de estudio como la \textbf{interrogación elaborativa} y el \textbf{recuerdo activo}.
+
+\begin{multicols}{2}
+\raggedcolumns
+
+\subsection*{1. Época Prehispánica (2500 a.C. – 1521 d.C.)}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{2500 a.C. – 200 d.C. (Preclásico):} Surgimiento de la cultura Olmeca (“cultura madre”).
+    \item \textbf{200 – 900 d.C. (Clásico):} Apogeo de Teotihuacán y la cultura maya (Palencque, Chichén Itzá).
+    \item \textbf{900 – 1521 d.C. (Postclásico):} 
+    \begin{itemize}
+        \item \textbf{1325:} Fundación de Tenochtitlán (Mexicas).
+        \item \textbf{1519:} Llegada de Hernán Cortés.
+        \item \textbf{1521:} Caída de Tenochtitlán, fin del imperio mexica.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Época Colonial / Virreinato (1521 – 1810)}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{1535:} Establecimiento del Virreinato de la Nueva España.
+    \item \textbf{Siglo XVIII:} Reformas Borbónicas (cambios administrativos que aumentaron el descontento criollo).
+    \item \textbf{1808:} Invasión francesa a España, crisis política en la colonia.
+\end{itemize}
+
+\subsection*{3. Independencia y Siglo XIX (1810 – 1876)}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{1810:} Grito de Dolores (inicio de la guerra de Independencia).
+    \item \textbf{1821:} Consumación de la Independencia (Plan de Iguala, Ejército Trigarante).
+    \item \textbf{1847 – 1848:} Intervención estadounidense. México pierde más de la mitad de su territorio (Tratado de Guadalupe Hidalgo).
+    \item \textbf{1855 – 1872:} La Reforma (Leyes de Reforma, Benito Juárez).
+    \item \textbf{1864 – 1867:} Segundo Imperio Mexicano (Maximiliano de Habsburgo).
+\end{itemize}
+
+\subsection*{4. Porfiriato y Revolución (1876 – 1917)}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{1876 – 1911:} Dictadura de Porfirio Díaz (modernización, desigualdad social y represión).
+    \item \textbf{1910:} Inicio de la Revolución Mexicana (Plan de San Luis, Francisco I. Madero).
+    \item \textbf{1917:} Promulgación de la Constitución Política de los Estados Unidos Mexicanos (actual).
+\end{itemize}
+
+\subsection*{5. México Contemporáneo (1917 – Presente)}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{1929:} Fundación del Partido Nacional Revolucionario (PNR), después PRI.
+    \item \textbf{1938:} Expropiación petrolera (Lázaro Cárdenas).
+    \item \textbf{1968:} Movimiento estudiantil y masacre de Tlatelolco.
+    \item \textbf{1985:} Terremoto en la Ciudad de México.
+    \item \textbf{1994:} Entrada en vigor del TLCAN (hoy T-MEC); levantamiento del EZLN en Chiapas.
+    \item \textbf{2000:} Alternancia política (Vicente Fox, fin de 71 años de gobiernos del PRI).
+    \item \textbf{2018 – actualidad:} Gobierno de Andrés Manuel López Obrador.
+\end{itemize}
+
+\end{multicols}
+
+\vspace{0.5cm}
+\section*{Lecturas recomendadas para profundizar}
+\begin{tcolorbox}[colframe=red!50!black, colback=white, title=Análisis Histórico]
+    \begin{enumerate}
+        \item \textbf{México: Tierra de Volcanes} (Joseph Schlarman) – Para entender la causalidad entre periodos.
+        \item \textbf{La Gesta del Postclásico} (Alfredo López Austin) – Ideal para practicar la fragmentación (chunking) de datos complejos.
+        \item \textbf{Ensayos de Historiografía} – Consulta el portal del \textit{Instituto de Investigaciones Históricas de la UNAM}.
+    \end{enumerate}
+\end{tcolorbox}
+
+\vfill
+\begin{center}
+    \small{Línea del tiempo elaborada para apoyo en exámenes de ingreso. ¡Estudia con constancia!}
+\end{center}
+\end{document}
