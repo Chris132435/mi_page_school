@@ -1,0 +1,462 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1.5cm}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+
+% Configuración de página y encabezados/pies
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{Christian Cristobal Carbajal García}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% Logo y marca de agua
+\makeatletter
+\AddToShipoutPictureFG*{%
+  \AtPageUpperLeft{%
+    \put(20,-60){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
+        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
+      }{}%
+    }%
+  }%
+  \AtPageUpperLeft{%
+    \put(470,-85){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}{%
+        \includegraphics[width=4.0cm]{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}%
+      }{}%
+    }%
+  }%
+}
+\makeatother
+
+\title{\textbf{Guía de Álgebra y Geometría Analítica -- 50 preguntas}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+\textbf{Instrucciones:} Selecciona la opción correcta en cada pregunta. Las respuestas numéricas pueden variar ligeramente en los decimales.
+
+\begin{multicols}{2}
+\raggedcolumns
+
+\begin{enumerate}
+
+% ÁLGEBRA (25 preguntas)
+
+\item Resuelve la ecuación $3x - 7 = 2x + 5$. ¿Cuál es el valor de $x$?
+\begin{enumerate}[label=(\alph*)]
+\item $10$
+\item $12$
+\item $8$
+\item $14$
+\end{enumerate}
+
+\item Si $x^2 - 5x + 6 = 0$, ¿cuáles son sus raíces?
+\begin{enumerate}[label=(\alph*)]
+\item $2$ y $3$
+\item $-2$ y $-3$
+\item $1$ y $6$
+\item $-1$ y $-6$
+\end{enumerate}
+
+\item Simplifica $(2a+3b)^2$:
+\begin{enumerate}[label=(\alph*)]
+\item $4a^2+12ab+9b^2$
+\item $4a^2+6ab+9b^2$
+\item $2a^2+12ab+3b^2$
+\item $4a^2+9b^2$
+\end{enumerate}
+
+\item Factoriza $x^2 - 16$:
+\begin{enumerate}[label=(\alph*)]
+\item $(x-4)(x+4)$
+\item $(x-8)(x+2)$
+\item $(x-4)^2$
+\item $(x-16)(x+1)$
+\end{enumerate}
+
+\item Resuelve el sistema: $2x + y = 7$, $x - y = 2$:
+\begin{enumerate}[label=(\alph*)]
+\item $x=3$, $y=1$
+\item $x=2$, $y=3$
+\item $x=4$, $y=-1$
+\item $x=1$, $y=5$
+\end{enumerate}
+
+\item ¿Cuál es el valor de $\log_2 8$?
+\begin{enumerate}[label=(\alph*)]
+\item $2$
+\item $3$
+\item $4$
+\item $1$
+\end{enumerate}
+
+\item Despeja $x$ en $a x + b = c$:
+\begin{enumerate}[label=(\alph*)]
+\item $x = \frac{c-b}{a}$
+\item $x = \frac{c+b}{a}$
+\item $x = c - b - a$
+\item $x = \frac{a}{c-b}$
+\end{enumerate}
+
+\item El producto $(x-2)(x^2+2x+4)$ es igual a:
+\begin{enumerate}[label=(\alph*)]
+\item $x^3 - 8$
+\item $x^3 + 8$
+\item $x^3 - 4x^2 + 8$
+\item $x^3 + 4x^2 - 8$
+\end{enumerate}
+
+\item ¿Cuál es el valor de $2^{-3}$?
+\begin{enumerate}[label=(\alph*)]
+\item $\frac{1}{8}$
+\item $8$
+\item $\frac{1}{6}$
+\item $6$
+\end{enumerate}
+
+\item La solución de $|x-3| = 5$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $x = 8$ o $x = -2$
+\item $x = 8$ o $x = 2$
+\item $x = -8$ o $x = 2$
+\item $x = -8$ o $x = -2$
+\end{enumerate}
+
+\item Si $\frac{x}{2} + 3 = 7$, entonces $x$ vale:
+\begin{enumerate}[label=(\alph*)]
+\item $8$
+\item $5$
+\item $10$
+\item $4$
+\end{enumerate}
+
+\item Factoriza $3x^2 - 12$:
+\begin{enumerate}[label=(\alph*)]
+\item $3(x-2)(x+2)$
+\item $3(x-4)(x+1)$
+\item $3(x-2)^2$
+\item $(3x-4)(x+3)$
+\end{enumerate}
+
+\item Resuelve $2^{x+1} = 16$:
+\begin{enumerate}[label=(\alph*)]
+\item $3$
+\item $4$
+\item $2$
+\item $5$
+\end{enumerate}
+
+\item La suma de los primeros 10 números naturales es:
+\begin{enumerate}[label=(\alph*)]
+\item $55$
+\item $50$
+\item $45$
+\item $60$
+\end{enumerate}
+
+\item Si $f(x) = 3x - 2$, entonces $f(5)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $13$
+\item $15$
+\item $10$
+\item $17$
+\end{enumerate}
+
+\item El valor de $(2^3)^2$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $64$
+\item $32$
+\item $16$
+\item $8$
+\end{enumerate}
+
+\item Resuelve $x^2 - 4x + 4 = 0$:
+\begin{enumerate}[label=(\alph*)]
+\item $x=2$ (doble)
+\item $x= -2$ (doble)
+\item $x=4$ (doble)
+\item $x=0$ y $x=4$
+\end{enumerate}
+
+\item Simplifica $\frac{x^2-9}{x-3}$ (para $x \neq 3$):
+\begin{enumerate}[label=(\alph*)]
+\item $x+3$
+\item $x-3$
+\item $x+9$
+\item $x-9$
+\end{enumerate}
+
+\item Si $\log x = 2$, entonces $x$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $100$
+\item $20$
+\item $10$
+\item $2$
+\end{enumerate}
+
+\item El mínimo común múltiplo de $6$ y $8$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $24$
+\item $48$
+\item $12$
+\item $16$
+\end{enumerate}
+
+\item Resuelve $3x^2 + 5x - 2 = 0$:
+\begin{enumerate}[label=(\alph*)]
+\item $x = \frac{1}{3}$ y $x = -2$
+\item $x = -\frac{1}{3}$ y $x = 2$
+\item $x = 2$ y $x = -\frac{1}{2}$
+\item $x = -2$ y $x = \frac{1}{2}$
+\end{enumerate}
+
+\item Si $a = 2$, $b = 3$, entonces $a^2 + b^2$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $13$
+\item $10$
+\item $5$
+\item $25$
+\end{enumerate}
+
+\item La ecuación de la recta con pendiente $2$ que pasa por $(1,3)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $y = 2x + 1$
+\item $y = 2x + 3$
+\item $y = 2x - 1$
+\item $y = 2x - 3$
+\end{enumerate}
+
+\item El valor de $\sqrt{50}$ simplificado es:
+\begin{enumerate}[label=(\alph*)]
+\item $5\sqrt{2}$
+\item $2\sqrt{5}$
+\item $10\sqrt{5}$
+\item $25\sqrt{2}$
+\end{enumerate}
+
+\item Si $3x - 2y = 5$ y $x + y = 2$, entonces $y$ vale:
+\begin{enumerate}[label=(\alph*)]
+\item $\frac{1}{5}$
+\item $\frac{2}{5}$
+\item $\frac{3}{5}$
+\item $1$
+\end{enumerate}
+
+% GEOMETRÍA ANALÍTICA (25 preguntas)
+
+\item La distancia entre los puntos $A(1,2)$ y $B(4,6)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $5$
+\item $4$
+\item $6$
+\item $7$
+\end{enumerate}
+
+\item El punto medio del segmento con extremos $(-2,3)$ y $(4,-1)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $(1,1)$
+\item $(2,2)$
+\item $(1,2)$
+\item $(2,1)$
+\end{enumerate}
+
+\item La pendiente de la recta que pasa por $(2,5)$ y $(4,9)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $2$
+\item $1$
+\item $3$
+\item $4$
+\end{enumerate}
+
+\item La ecuación de la recta con pendiente $3$ que pasa por $(0,2)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $y = 3x + 2$
+\item $y = 2x + 3$
+\item $y = 3x - 2$
+\item $y = 2x - 3$
+\end{enumerate}
+
+\item ¿Cuál es el centro de la circunferencia $(x-3)^2 + (y+2)^2 = 25$?
+\begin{enumerate}[label=(\alph*)]
+\item $(3,-2)$
+\item $(-3,2)$
+\item $(3,2)$
+\item $(-3,-2)$
+\end{enumerate}
+
+\item El radio de la circunferencia $x^2 + y^2 = 16$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $4$
+\item $8$
+\item $2$
+\item $16$
+\end{enumerate}
+
+\item La ecuación de la recta que pasa por $(1,1)$ y es paralela a $y = 2x + 3$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $y = 2x - 1$
+\item $y = 2x + 1$
+\item $y = -2x + 1$
+\item $y = -2x - 1$
+\end{enumerate}
+
+\item El vértice de la parábola $y = x^2 - 4x + 3$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $(2,-1)$
+\item $(-2,1)$
+\item $(2,1)$
+\item $(-2,-1)$
+\end{enumerate}
+
+\item La distancia del punto $P(3,4)$ a la recta $x + y - 2 = 0$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $\frac{5}{\sqrt{2}}$
+\item $\frac{5}{2}$
+\item $5$
+\item $\sqrt{5}$
+\end{enumerate}
+
+\item El área del triángulo con vértices $(0,0)$, $(4,0)$ y $(0,3)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $6$
+\item $12$
+\item $8$
+\item $10$
+\end{enumerate}
+
+\item La ecuación de la circunferencia con centro $(2,-1)$ y radio $3$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $(x-2)^2 + (y+1)^2 = 9$
+\item $(x+2)^2 + (y-1)^2 = 9$
+\item $(x-2)^2 + (y+1)^2 = 3$
+\item $(x+2)^2 + (y-1)^2 = 3$
+\end{enumerate}
+
+\item La pendiente de la recta perpendicular a $y = \frac{1}{2}x + 3$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $-2$
+\item $2$
+\item $-\frac{1}{2}$
+\item $\frac{1}{2}$
+\end{enumerate}
+
+\item El foco de la parábola $y^2 = 8x$ está en:
+\begin{enumerate}[label=(\alph*)]
+\item $(2,0)$
+\item $(0,2)$
+\item $(4,0)$
+\item $(0,4)$
+\end{enumerate}
+
+\item Los focos de la elipse $\frac{x^2}{25} + \frac{y^2}{9} = 1$ son:
+\begin{enumerate}[label=(\alph*)]
+\item $(\pm 4,0)$
+\item $(0,\pm 4)$
+\item $(\pm 3,0)$
+\item $(0,\pm 3)$
+\end{enumerate}
+
+\item La ecuación de la recta tangente a la circunferencia $x^2+y^2=25$ en el punto $(3,4)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $3x+4y=25$
+\item $3x-4y=25$
+\item $4x+3y=25$
+\item $4x-3y=25$
+\end{enumerate}
+
+\item El valor de $k$ para que la recta $y = kx + 2$ sea tangente a la parábola $y = x^2$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $k = \pm 2\sqrt{2}$
+\item $k = \pm 2$
+\item $k = \pm \sqrt{2}$
+\item $k = \pm 4$
+\end{enumerate}
+
+\item La excentricidad de la elipse $\frac{x^2}{16} + \frac{y^2}{7} = 1$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $\frac{3}{4}$
+\item $\frac{4}{3}$
+\item $\frac{1}{2}$
+\item $\frac{\sqrt{7}}{4}$
+\end{enumerate}
+
+\item Las asíntotas de la hipérbola $\frac{x^2}{9} - \frac{y^2}{16} = 1$ son:
+\begin{enumerate}[label=(\alph*)]
+\item $y = \pm \frac{4}{3}x$
+\item $y = \pm \frac{3}{4}x$
+\item $y = \pm \frac{4}{3}y$
+\item $y = \pm \frac{3}{4}y$
+\end{enumerate}
+
+\item El ángulo entre las rectas $x + y = 0$ y $x - y = 0$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $90^\circ$
+\item $45^\circ$
+\item $60^\circ$
+\item $30^\circ$
+\end{enumerate}
+
+\item La ecuación de la recta que pasa por la intersección de $x+y=3$ y $x-y=1$ y es perpendicular a $2x+y=0$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $x-2y+1=0$
+\item $x+2y-1=0$
+\item $2x-y+1=0$
+\item $2x+y-1=0$
+\end{enumerate}
+
+\item El lugar geométrico de los puntos equidistantes de $(2,0)$ y $(-2,0)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $x=0$
+\item $y=0$
+\item $x^2+y^2=4$
+\item $y=x$
+\end{enumerate}
+
+\item La ecuación de la parábola con vértice en el origen y foco $(0,3)$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $x^2 = 12y$
+\item $y^2 = 12x$
+\item $x^2 = 6y$
+\item $y^2 = 6x$
+\end{enumerate}
+
+\item El centro de la hipérbola $9x^2 - 16y^2 = 144$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $(0,0)$
+\item $(4,0)$
+\item $(0,3)$
+\item $(3,4)$
+\end{enumerate}
+
+\item La ecuación de la recta que pasa por $(1,2)$ y forma un ángulo de $45^\circ$ con el eje $x$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $y = x + 1$
+\item $y = x + 2$
+\item $y = -x + 3$
+\item $y = -x + 1$
+\end{enumerate}
+
+\item La suma de las coordenadas del punto de intersección de las rectas $2x+3y=12$ y $x-2y=1$ es:
+\begin{enumerate}[label=(\alph*)]
+\item $5$
+\item $4$
+\item $6$
+\item $7$
+\end{enumerate}
+
+\end{enumerate}
+\end{multicols}
+\end{document}

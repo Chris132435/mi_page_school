@@ -1,0 +1,234 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1.5cm}
+\usepackage{tikz}
+\usetikzlibrary{babel}        % Evita conflicto con el español
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+
+% Configuración de página y encabezados/pies
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{Christian Cristobal Carbajal García}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% Logo y marca de agua
+\makeatletter
+\AddToShipoutPictureFG*{%
+  % Logo izquierda
+  \AtPageUpperLeft{%
+    \put(20,-60){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
+        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
+      }{}%
+    }%
+  }%
+  % Marca de agua superior derecha
+  \AtPageUpperLeft{%
+    \put(470,-85){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}{%
+        \includegraphics[width=4.0cm]{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}%
+      }{}%
+    }%
+  }%
+}
+\makeatother
+
+\title{\textbf{Formulario de Geometría -- Nivel Bachillerato}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{multicols}{2}
+\raggedcolumns
+
+\section*{Geometría plana}
+
+\subsection*{Triángulos}
+
+\begin{tikzpicture}[scale=0.5, baseline=-0.5cm]
+\draw (0,0) -- (3,0) -- (1,2) -- cycle;
+\draw (0,0) node[below left] {$A$};
+\draw (3,0) node[below right] {$B$};
+\draw (1,2) node[above] {$C$};
+\draw[<->] (0,-0.3) -- (3,-0.3) node[midway,below] {$c$};
+\draw[<->] (3.2,0) -- (1.2,2) node[midway,right] {$a$};
+\draw[<->] (-0.2,0) -- (0.8,2) node[midway,left] {$b$};
+\end{tikzpicture}
+
+\begin{itemize}[leftmargin=*]
+    \item Suma de ángulos: $A+B+C = 180^\circ$
+    \item Teorema de Pitágoras (rectángulo): $a^2+b^2=c^2$
+    \item Área: $A = \frac{1}{2} \cdot \text{base} \cdot \text{altura}$
+    \item Ley de senos: $\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}$
+    \item Ley de cosenos: $c^2 = a^2+b^2-2ab\cos C$
+\end{itemize}
+
+\subsection*{Cuadriláteros}
+
+\begin{tikzpicture}[scale=0.45, baseline=-0.5cm]
+\draw (0,0) rectangle (2.5,1.5);
+\draw[<->] (0,-0.3) -- (2.5,-0.3) node[midway,below] {$b$};
+\draw[<->] (2.8,0) -- (2.8,1.5) node[midway,right] {$h$};
+\node at (1.25,0.75) {Rectángulo};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.45, baseline=-0.5cm]
+\draw (0,0) -- (2,0) -- (2.5,1.5) -- (0.5,1.5) -- cycle;
+\draw[<->] (0,-0.3) -- (2,-0.3) node[midway,below] {$B$};
+\draw[<->] (2.5,-0.3) -- (0.5,-0.3) node[midway,below] {$b$};
+\draw[<->] (2.8,0) -- (2.8,1.5) node[midway,right] {$h$};
+\node at (1.25,0.75) {Trapecio};
+\end{tikzpicture}
+
+\begin{itemize}[leftmargin=*]
+    \item Cuadrado: $P=4a$, $A=a^2$
+    \item Rectángulo: $P=2(b+h)$, $A=bh$
+    \item Paralelogramo: $A = b\cdot h$
+    \item Trapecio: $A = \frac{(B+b)h}{2}$
+    \item Rombo: $A = \frac{D\cdot d}{2}$
+\end{itemize}
+
+\subsection*{Círculo y circunferencia}
+
+\begin{tikzpicture}[scale=0.5, baseline=-0.5cm]
+\draw (0,0) circle (1.2);
+\draw[<->] (-1.2,0) -- (1.2,0) node[midway,below] {$d=2r$};
+\draw[<->] (0,-1.2) -- (0,1.2) node[midway,left] {$d=2r$};
+\node at (0,-1.8) {Centro $O$};
+\end{tikzpicture}
+
+\begin{itemize}[leftmargin=*]
+    \item Longitud (perímetro): $L = 2\pi r$
+    \item Área del círculo: $A = \pi r^2$
+    \item Longitud de arco: $L_{\text{arco}} = \frac{\theta}{360^\circ} \cdot 2\pi r$
+    \item Área del sector: $A_{\text{sector}} = \frac{\theta}{360^\circ} \cdot \pi r^2$
+\end{itemize}
+
+\section*{Geometría del espacio}
+
+\subsection*{Prismas y cilindros}
+
+\begin{tikzpicture}[scale=0.4, baseline=-0.5cm]
+\draw (0,0) -- (2,0) -- (2,1.5) -- (0,1.5) -- cycle;
+\draw (0.5,0.2) -- (2.5,0.2) -- (2.5,1.7) -- (0.5,1.7) -- cycle;
+\draw[dashed] (0,0) -- (0.5,0.2);
+\draw[dashed] (2,0) -- (2.5,0.2);
+\draw[dashed] (2,1.5) -- (2.5,1.7);
+\draw[dashed] (0,1.5) -- (0.5,1.7);
+\node at (1.25,0.75) {Prisma};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.4, baseline=-0.5cm]
+\draw (0,0) ellipse (1 and 0.4);
+\draw (0,2) ellipse (1 and 0.4);
+\draw (-1,0) -- (-1,2);
+\draw (1,0) -- (1,2);
+\draw[dashed] (-0.5,0) -- (-0.5,2);
+\draw[dashed] (0.5,0) -- (0.5,2);
+\node at (0,1) {Cilindro};
+\end{tikzpicture}
+
+\begin{itemize}[leftmargin=*]
+    \item Volumen del prisma: $V = A_{\text{base}} \cdot h$
+    \item Área lateral: $A_L = P_{\text{base}} \cdot h$
+    \item Volumen del cilindro: $V = \pi r^2 h$
+    \item Área lateral del cilindro: $A_L = 2\pi r h$
+\end{itemize}
+
+\subsection*{Pirámides y conos}
+
+\begin{tikzpicture}[scale=0.4, baseline=-0.5cm]
+\draw (0,0) -- (2,0) -- (2,1.5) -- (0,1.5) -- cycle;
+\draw (1,0.75) -- (1,2.5);
+\node at (1,2.5) {$\cdot$};
+\draw[dashed] (1,2.5) -- (0,1.5);
+\draw[dashed] (1,2.5) -- (2,1.5);
+\draw[dashed] (1,2.5) -- (0,0);
+\draw[dashed] (1,2.5) -- (2,0);
+\node at (1,0.75) {Pirámide};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.4, baseline=-0.5cm]
+\draw (0,0) ellipse (1 and 0.4);
+\draw (-1,0) -- (0,2);
+\draw (1,0) -- (0,2);
+\draw[dashed] (-0.5,0) -- (0,2);
+\draw[dashed] (0.5,0) -- (0,2);
+\node at (0,1) {Cono};
+\end{tikzpicture}
+
+\begin{itemize}[leftmargin=*]
+    \item Volumen de la pirámide: $V = \frac{1}{3} A_{\text{base}} \cdot h$
+    \item Volumen del cono: $V = \frac{1}{3} \pi r^2 h$
+    \item Área lateral del cono: $A_L = \pi r g$ (donde $g$ es la generatriz)
+\end{itemize}
+
+\subsection*{Esfera}
+
+\begin{tikzpicture}[scale=0.4, baseline=-0.5cm]
+\draw (0,0) circle (1);
+\draw[<->] (-1.2,0) -- (1.2,0) node[midway,below] {$d=2r$};
+\draw[<->] (0,-1.2) -- (0,1.2) node[midway,left] {$d=2r$};
+\node at (0,-1.8) {Esfera};
+\end{tikzpicture}
+
+\begin{itemize}[leftmargin=*]
+    \item Volumen: $V = \frac{4}{3}\pi r^3$
+    \item Área superficial: $A = 4\pi r^2$
+\end{itemize}
+
+\section*{Geometría analítica (plano)}
+
+\subsection*{Puntos y rectas}
+
+\begin{itemize}[leftmargin=*]
+    \item Distancia entre dos puntos: $d = \sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$
+    \item Punto medio: $M = \left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right)$
+    \item Pendiente: $m = \frac{y_2-y_1}{x_2-x_1}$
+    \item Ecuación de la recta: $y-y_1 = m(x-x_1)$
+    \item Distancia de un punto a una recta $Ax+By+C=0$: $d = \frac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}$
+\end{itemize}
+
+\begin{tikzpicture}[scale=0.6, baseline=-0.5cm]
+\draw[->] (-1,0) -- (3,0) node[right] {$x$};
+\draw[->] (0,-1) -- (0,2) node[above] {$y$};
+\draw[domain=-0.5:2.5, samples=100] plot (\x,{0.8*\x+0.5});
+\draw (0.5,0.9) node[above right] {$y=mx+b$};
+\end{tikzpicture}
+
+\subsection*{Circunferencia}
+\[
+(x-h)^2 + (y-k)^2 = r^2
+\]
+Centro $(h,k)$, radio $r$.
+
+\subsection*{Parábola}
+\[
+y = ax^2+bx+c \quad\text{(vértice } x_v = -\frac{b}{2a}\text{)}
+\]
+
+\subsection*{Elipse}
+\[
+\frac{(x-h)^2}{a^2} + \frac{(y-k)^2}{b^2} = 1
+\]
+
+\subsection*{Hipérbola}
+\[
+\frac{(x-h)^2}{a^2} - \frac{(y-k)^2}{b^2} = 1
+\]
+
+\end{multicols}
+
+\vfill
+\begin{center}
+\small{Formulario de apoyo para geometría -- ¡Practica con figuras!}
+\end{center}
+\end{document}
