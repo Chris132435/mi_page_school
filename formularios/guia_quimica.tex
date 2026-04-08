@@ -1,0 +1,245 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1.5cm}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+
+% Configuración de página y encabezados/pies
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{Christian Cristobal Carbajal García}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% Logo y marca de agua
+\makeatletter
+\AddToShipoutPictureFG*{%
+  \AtPageUpperLeft{%
+    \put(20,-60){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
+        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
+      }{}%
+    }%
+  }%
+  \AtPageUpperLeft{%
+    \put(470,-85){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}{%
+        \includegraphics[width=4.0cm]{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}%
+      }{}%
+    }%
+  }%
+}
+\makeatother
+
+\title{\textbf{Guía de Química Básica}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% SECCIÓN DE TABLA PERIÓDICA (una sola columna)
+\section*{Tabla periódica (fragmento)}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Elemento} & \textbf{Símbolo} & \textbf{N° atómico} & \textbf{Masa (g/mol)} \\ \hline
+Hidrógeno & H & 1 & 1.008 \\
+Helio & He & 2 & 4.003 \\
+Litio & Li & 3 & 6.941 \\
+Berilio & Be & 4 & 9.012 \\
+Boro & B & 5 & 10.81 \\
+Carbono & C & 6 & 12.01 \\
+Nitrógeno & N & 7 & 14.01 \\
+Oxígeno & O & 8 & 16.00 \\
+Flúor & F & 9 & 19.00 \\
+Neón & Ne & 10 & 20.18 \\
+Sodio & Na & 11 & 22.99 \\
+Magnesio & Mg & 12 & 24.31 \\
+Aluminio & Al & 13 & 26.98 \\
+Silicio & Si & 14 & 28.09 \\
+Fósforo & P & 15 & 30.97 \\
+Azufre & S & 16 & 32.07 \\
+Cloro & Cl & 17 & 35.45 \\
+Argón & Ar & 18 & 39.95 \\
+Potasio & K & 19 & 39.10 \\
+Calcio & Ca & 20 & 40.08 \\
+Hierro & Fe & 26 & 55.85 \\
+Cobre & Cu & 29 & 63.55 \\
+Zinc & Zn & 30 & 65.38 \\
+Plata & Ag & 47 & 107.87 \\
+Yodo & I & 53 & 126.90 \\
+Oro & Au & 79 & 197.00 \\
+Mercurio & Hg & 80 & 200.59 \\
+\hline
+\end{tabular}
+\end{center}
+\vspace{0.5cm}
+\noindent\textbf{Nota:} La tabla completa tiene 118 elementos.
+
+% A partir de aquí, dos columnas para el resto
+\begin{multicols}{2}
+\raggedcolumns
+
+\section*{Unidades y constantes fundamentales}
+\begin{itemize}[leftmargin=*]
+    \item Número de Avogadro: $N_A = 6.022 \times 10^{23} \ \text{mol}^{-1}$
+    \item Constante de los gases: $R = 0.082057 \ \text{L·atm·mol}^{-1}\text{K}^{-1}$ \\
+    $R = 8.314 \ \text{J·mol}^{-1}\text{K}^{-1}$
+    \item Constante de Faraday: $F = 96485 \ \text{C·mol}^{-1}$
+    \item Volumen molar (STP): $22.414 \ \text{L/mol}$
+    \item Temperatura estándar: $0^\circ\text{C} = 273.15 \ \text{K}$
+\end{itemize}
+
+\section*{Conceptos básicos}
+\subsection*{Masa atómica y molecular}
+\begin{itemize}[leftmargin=*]
+    \item Masa atómica: masa promedio de los isótopos de un elemento (u.m.a.).
+    \item Masa molecular: suma de masas atómicas de los átomos en una molécula.
+    \item Mol: cantidad de sustancia que contiene $N_A$ partículas.
+    \item Masa molar: masa de un mol de sustancia (g/mol).
+\end{itemize}
+
+\subsection*{Fórmulas empíricas y moleculares}
+\begin{itemize}[leftmargin=*]
+    \item Fórmula empírica: proporción mínima de átomos.
+    \item Fórmula molecular: número real de átomos.
+    \item Relación: $n = \frac{\text{masa molar}}{\text{masa fórmula empírica}}$
+\end{itemize}
+
+\section*{Estequiometría}
+\subsection*{Leyes ponderales}
+\begin{itemize}[leftmargin=*]
+    \item Ley de conservación de la masa (Lavoisier): la masa total se conserva.
+    \item Ley de proporciones definidas (Proust): un compuesto siempre tiene la misma proporción en masa de sus elementos.
+    \item Ley de proporciones múltiples (Dalton): si dos elementos forman más de un compuesto, las masas de uno combinado con una masa fija del otro están en relación de números enteros pequeños.
+\end{itemize}
+
+\subsection*{Cálculos estequiométricos}
+\begin{itemize}[leftmargin=*]
+    \item Moles: $n = \frac{\text{masa (g)}}{\text{masa molar (g/mol)}}$
+    \item Número de partículas: $N = n \cdot N_A$
+    \item Rendimiento: $\% \text{rendimiento} = \frac{\text{rendimiento real}}{\text{rendimiento teórico}} \times 100$
+\end{itemize}
+
+\section*{Gases}
+\subsection*{Ley de los gases ideales}
+\[
+PV = nRT
+\]
+Donde $P$ = presión, $V$ = volumen, $n$ = moles, $R$ = constante, $T$ = temperatura (K).
+
+\subsection*{Leyes derivadas}
+\begin{itemize}[leftmargin=*]
+    \item Boyle: $P_1V_1 = P_2V_2$ (T constante)
+    \item Charles: $\frac{V_1}{T_1} = \frac{V_2}{T_2}$ (P constante)
+    \item Gay-Lussac: $\frac{P_1}{T_1} = \frac{P_2}{T_2}$ (V constante)
+    \item Ley combinada: $\frac{P_1V_1}{T_1} = \frac{P_2V_2}{T_2}$
+\end{itemize}
+
+\subsection*{Densidad de un gas}
+\[
+d = \frac{PM}{RT}
+\]
+Donde $M$ es la masa molar.
+
+\subsection*{Ley de Dalton (presiones parciales)}
+\[
+P_{\text{total}} = \sum P_i, \quad P_i = X_i P_{\text{total}}, \quad X_i = \frac{n_i}{n_{\text{total}}}
+\]
+
+\section*{Disoluciones}
+\subsection*{Concentraciones}
+\begin{itemize}[leftmargin=*]
+    \item Molaridad: $M = \frac{\text{moles de soluto}}{\text{litros de solución}}$
+    \item Molalidad: $m = \frac{\text{moles de soluto}}{\text{kg de disolvente}}$
+    \item Fracción molar: $X_i = \frac{n_i}{n_{\text{total}}}$
+    \item Porcentaje en masa: $\% m/m = \frac{\text{masa soluto}}{\text{masa solución}} \times 100$
+    \item Porcentaje en volumen: $\% v/v = \frac{\text{volumen soluto}}{\text{volumen solución}} \times 100$
+\end{itemize}
+
+\subsection*{Diluciones}
+\[
+C_1V_1 = C_2V_2
+\]
+
+\section*{Estequiometría en disolución}
+\[
+\text{Moles} = M \cdot V \quad (\text{volumen en litros})
+\]
+
+\section*{Reacciones químicas}
+\subsection*{Tipos de reacciones}
+\begin{itemize}[leftmargin=*]
+    \item Síntesis: $A + B \rightarrow AB$
+    \item Descomposición: $AB \rightarrow A + B$
+    \item Desplazamiento simple: $A + BC \rightarrow AC + B$
+    \item Doble desplazamiento: $AB + CD \rightarrow AD + CB$
+    \item Combustión: $C_xH_y + O_2 \rightarrow CO_2 + H_2O$
+\end{itemize}
+
+\subsection*{Balanceo de ecuaciones}
+Método de tanteo o redox.
+
+\section*{Termoquímica}
+\begin{itemize}[leftmargin=*]
+    \item Entalpía de reacción: $\Delta H = H_{\text{productos}} - H_{\text{reactivos}}$
+    \item Reacción exotérmica: $\Delta H < 0$ (libera calor)
+    \item Reacción endotérmica: $\Delta H > 0$ (absorbe calor)
+    \item Ley de Hess: $\Delta H$ total es independiente de la trayectoria.
+\end{itemize}
+
+\section*{Estructura atómica}
+\begin{itemize}[leftmargin=*]
+    \item Número atómico $Z$ = protones.
+    \item Número másico $A$ = protones + neutrones.
+    \item Isótopos: mismo $Z$, diferente $A$.
+    \item Configuración electrónica: principio de Aufbau, regla de Hund, exclusión de Pauli.
+\end{itemize}
+
+\section*{Enlace químico}
+\begin{itemize}[leftmargin=*]
+    \item Enlace iónico: transferencia de electrones (metal + no metal).
+    \item Enlace covalente: compartición de electrones (no metal + no metal).
+    \item Enlace metálico: nube de electrones (metal + metal).
+    \item Electronegatividad: capacidad de atraer electrones (Pauling).
+\end{itemize}
+
+\section*{Ácidos y bases}
+\begin{itemize}[leftmargin=*]
+    \item Arrhenius: ácido produce $H^+$, base produce $OH^-$.
+    \item Brønsted-Lowry: ácido dona $H^+$, base acepta $H^+$.
+    \item $pH = -\log[H^+]$, $pOH = -\log[OH^-]$, $pH + pOH = 14$
+    \item Neutralización: $H^+ + OH^- \rightarrow H_2O$
+\end{itemize}
+
+\section*{Cinética química}
+\begin{itemize}[leftmargin=*]
+    \item Velocidad de reacción: $v = k[A]^m[B]^n$
+    \item Orden de reacción: $m+n$
+    \item Ecuación de Arrhenius: $k = A e^{-E_a/(RT)}$
+\end{itemize}
+
+\section*{Electroquímica}
+\begin{itemize}[leftmargin=*]
+    \item Celda galvánica: energía química $\rightarrow$ eléctrica.
+    \item Potencial estándar: $E^\circ_{\text{celda}} = E^\circ_{\text{cátodo}} - E^\circ_{\text{ánodo}}$
+    \item Ecuación de Nernst: $E = E^\circ - \frac{0.0592}{n} \log Q$ (a 298 K)
+\end{itemize}
+
+\end{multicols}
+
+\vfill
+\begin{center}
+\small{Guía de apoyo para química básica -- ¡Consulta la tabla periódica y practica!}
+\end{center}
+\end{document}
