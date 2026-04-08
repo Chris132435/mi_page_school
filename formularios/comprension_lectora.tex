@@ -1,0 +1,96 @@
+\documentclass[12pt,a4paper]{article}
+
+% Paquetes necesarios
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{amssymb}        % Para \checkmark
+\usepackage{graphicx}       % Para logos
+\usepackage{eso-pic}        % Para posicionar logos
+\usepackage{fancyhdr}       % Para pie de página
+
+% Configuración de títulos
+\titleformat{\section}{\large\bfseries\color{blue!70!black}}{}{0em}{}[\titlerule]
+
+% Configuración de página y encabezados/pies
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{Christian Cristobal Carbajal García}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% Logos (solo primera página)
+\makeatletter
+\AddToShipoutPictureFG*{%
+  \AtPageUpperLeft{%
+    \put(20,-60){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}{%
+        \includegraphics[width=2.5cm]{/home/christian/Documentos/Reportes_Aut/imagenes/logo_pdf.png}%
+      }{}%
+    }%
+  }%
+  \AtPageUpperLeft{%
+    \put(470,-85){%
+      \IfFileExists{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}{%
+        \includegraphics[width=4.0cm]{/home/christian/Documentos/Reportes_Aut/imagenes/marca_de_agua.png}%
+      }{}%
+    }%
+  }%
+}
+\makeatother
+
+\title{\textbf{Técnicas de Comprensión Lectora con Base Científica}}
+\author{Guía de Estrategias para Exámenes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+La comprensión lectora efectiva no es un proceso pasivo, sino una actividad cognitiva que requiere el uso de estrategias específicas para transformar la información en conocimiento duradero.
+
+\section{1. Método SQ3R}
+Este es el método más reconocido en la psicología educativa para el estudio profundo:
+\begin{itemize}[label=\checkmark]
+    \item \textbf{Survey (Inspeccionar):} Revisar títulos y gráficos en menos de 1 minuto.
+    \item \textbf{Question (Preguntar):} Convertir títulos en preguntas (¿Qué?, ¿Cómo?, ¿Por qué?).
+    \item \textbf{Read (Leer):} Lectura activa buscando responder las preguntas anteriores.
+    \item \textbf{Recite (Recitar):} Explicar con palabras propias lo leído.
+    \item \textbf{Review (Revisar):} Repaso general para consolidar la memoria.
+\end{itemize}
+
+\section{2. Recuerdo Activo (Active Recall)}
+La ciencia demuestra que el esfuerzo de \textit{extraer} información del cerebro fortalece las rutas neuronales más que volver a leer. 
+\begin{itemize}
+    \item \textbf{Aplicación:} Cerrar el libro tras cada sección e intentar escribir los puntos clave sin ayuda.
+\end{itemize}
+
+\section{3. Interrogación Elaborativa}
+Consiste en preguntarse constantemente el \textbf{porqué} de los hechos.
+\begin{itemize}
+    \item \textbf{Beneficio:} Ayuda a crear conexiones lógicas. Es más fácil recordar un "porqué" que un dato aislado.
+\end{itemize}
+
+\section{4. Codificación Dual (Dual Coding)}
+Nuestro cerebro tiene canales distintos para imágenes y palabras. 
+\begin{itemize}
+    \item \textbf{Estrategia:} Mientras lees texto técnico, dibuja un pequeño esquema o diagrama de flujo. Al usar ambos canales, la retención aumenta hasta en un 50\%.
+\end{itemize}
+
+\section{5. Técnica de Chunking (Fragmentación)}
+La memoria de trabajo es limitada. Para no saturarla en un examen:
+\begin{itemize}
+    \item \textbf{Técnica:} Divide párrafos largos en unidades de información más pequeñas y manejables.
+\end{itemize}
+
+\vspace{1cm}
+\begin{center}
+    \textit{"La comprensión es el resultado de la curiosidad estructurada."}
+\end{center}
+
+\end{document}
