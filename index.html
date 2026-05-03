@@ -345,31 +345,74 @@
     background: rgba(240,180,41,.12); border: 1px solid rgba(240,180,41,.35); color: #f0b429;
     font-size: 0.75rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
   }
+  .library-tools {
+    display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+    margin-bottom: 30px; position: relative; z-index: 1;
+  }
+  .library-search-wrap {
+    display: flex; align-items: center; gap: 12px; flex: 1 1 320px;
+    padding: 14px 16px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  }
+  .library-search-wrap span { color: #f0b429; font-size: 1rem; }
+  .library-search {
+    flex: 1; background: transparent; border: none; outline: none; color: #f5f0e8; font-size: 0.92rem;
+  }
+  .library-search::placeholder { color: #818181; }
+  .library-count { color: #8d8d8d; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .library-filter-row {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; position: relative; z-index: 1;
+  }
+  .library-filter {
+    border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: #ddd; cursor: pointer;
+    padding: 9px 14px; border-radius: 999px; font-size: 0.76rem; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
+    transition: border-color .2s, background .2s, color .2s;
+  }
+  .library-filter:hover, .library-filter.active { border-color: #f0b429; background: rgba(240,180,41,.14); color: #f0b429; }
   .library-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; position: relative; z-index: 1; }
   .book-card {
-    background: rgba(255,255,255,.04); border: 1.5px solid rgba(255,255,255,.08); border-radius: 14px;
-    padding: 24px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;
+    background: linear-gradient(180deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,.03) 100%);
+    border: 1.5px solid rgba(255,255,255,.08); border-radius: 14px;
+    padding: 18px; display: flex; flex-direction: column; gap: 14px; min-height: 100%;
     transition: transform .25s, border-color .25s, box-shadow .25s;
   }
   .book-card:hover { transform: translateY(-5px); border-color: rgba(240,180,41,.45); box-shadow: 0 18px 38px rgba(0,0,0,.22); }
-  .book-top { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
-  .book-icon {
-    width: 52px; height: 52px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; background: rgba(240,180,41,.14); color: #f0b429;
+  .book-card.hidden { display: none; }
+  .book-preview {
+    position: relative; aspect-ratio: 3 / 4.2; border-radius: 12px; overflow: hidden; background: #0f0f0f;
+    border: 1px solid rgba(255,255,255,.08);
   }
+  .book-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .book-preview::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.42) 100%);
+  }
+  .book-top { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
   .book-badge {
     font-size: 0.68rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
     padding: 5px 10px; border-radius: 999px; background: rgba(28,108,232,.18); color: #7eb1ff;
   }
+  .book-size { color: #858585; font-size: 0.75rem; font-weight: 700; letter-spacing: .6px; }
   .book-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; letter-spacing: .8px; color: #fff; line-height: 1.1; }
   .book-desc { color: #aaa; font-size: 0.88rem; line-height: 1.65; }
-  .book-meta { color: #777; font-size: 0.78rem; }
+  .book-meta { color: #777; font-size: 0.78rem; min-height: 18px; }
+  .book-actions {
+    margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
   .book-link {
-    margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     padding: 12px 18px; border-radius: 8px; background: #f0b429; color: #111; text-decoration: none;
     font-weight: 800; font-size: 0.82rem; letter-spacing: .8px; text-transform: uppercase; transition: transform .2s, filter .2s;
   }
   .book-link:hover { transform: translateY(-1px); filter: brightness(1.05); }
+  .book-link.secondary {
+    background: transparent; color: #f5f0e8; border: 1px solid rgba(255,255,255,.14);
+  }
+  .book-link.secondary:hover { border-color: rgba(240,180,41,.45); color: #f0b429; }
+  .empty-library {
+    display: none; align-items: center; justify-content: center; text-align: center; min-height: 180px;
+    border: 1px dashed rgba(255,255,255,.14); border-radius: 14px; color: #9a9a9a; padding: 24px; position: relative; z-index: 1;
+  }
+  .empty-library.active { display: flex; }
   .private-wrapper { position: relative; }
   .private-content.is-locked { filter: blur(3px); opacity: .3; pointer-events: none; user-select: none; }
   .lock-overlay {
@@ -527,6 +570,7 @@
     .hero-stats { gap: 18px; flex-wrap: wrap; }
     .session-top, .session-tabs, .session-body { padding-left: 18px; padding-right: 18px; }
     .lock-panel { padding: 24px 20px; }
+    .book-actions { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -951,91 +995,48 @@
   <div class="biblioteca-header">
     <div>
       <div class="section-label">Acceso para alumnos</div>
-      <h2 class="section-title">Biblioteca privada</h2>
+      <h2 class="section-title">Biblioteca digital</h2>
     </div>
-    <div class="private-chip">🔒 Libros y formularios exclusivos</div>
+    <div class="private-chip">🔒 Libros de consulta en Drive</div>
   </div>
 
   <div class="private-wrapper">
     <div class="private-content is-locked" id="privateLibraryContent">
-      <div class="library-grid">
-        <article class="book-card">
-          <div class="book-top">
-            <div class="book-icon">📘</div>
-            <span class="book-badge">Matematicas</span>
-          </div>
-          <div class="book-name">Algebra esencial</div>
-          <p class="book-desc">Resumen de formulas, operaciones clave y ejercicios base para alumnos que empiezan su repaso de ingreso.</p>
-          <div class="book-meta">PDF privado · carpeta `formularios`</div>
-          <a href="formularios/algebra_formulario.pdf" class="book-link" target="_blank">Abrir libro</a>
-        </article>
+      <div class="library-tools">
+        <label class="library-search-wrap" for="librarySearch">
+          <span>🔎</span>
+          <input id="librarySearch" class="library-search" type="search" placeholder="Buscar por titulo, tema o autor">
+        </label>
+        <div class="library-count" id="libraryCount">0 libros</div>
+      </div>
 
-        <article class="book-card">
-          <div class="book-top">
-            <div class="book-icon">📐</div>
-            <span class="book-badge">Geometria</span>
-          </div>
-          <div class="book-name">Formulario de geometria</div>
-          <p class="book-desc">Coleccion de formulas y relaciones geometricas para consulta rapida durante el estudio y los simulacros.</p>
-          <div class="book-meta">PDF privado · carpeta `formularios`</div>
-          <a href="formularios/formulario_geometria.pdf" class="book-link" target="_blank">Abrir libro</a>
-        </article>
+      <div class="library-filter-row">
+        <button class="library-filter active" type="button" data-library-filter="all">Todos</button>
+        <button class="library-filter" type="button" data-library-filter="matematicas">Matematicas</button>
+        <button class="library-filter" type="button" data-library-filter="fisica">Fisica</button>
+        <button class="library-filter" type="button" data-library-filter="quimica">Quimica</button>
+        <button class="library-filter" type="button" data-library-filter="probabilidad">Probabilidad</button>
+        <button class="library-filter" type="button" data-library-filter="circuitos">Circuitos</button>
+        <button class="library-filter" type="button" data-library-filter="ingenieria">Ingenieria</button>
+      </div>
 
-        <article class="book-card">
-          <div class="book-top">
-            <div class="book-icon">🧪</div>
-            <span class="book-badge">Ciencias</span>
-          </div>
-          <div class="book-name">Quimica de apoyo</div>
-          <p class="book-desc">Material de referencia para formulas, conversiones, nomenclatura y temas frecuentes en examenes de ingreso.</p>
-          <div class="book-meta">PDF privado · carpeta `formularios`</div>
-          <a href="formularios/guia_quimica.pdf" class="book-link" target="_blank">Abrir libro</a>
-        </article>
+      <div class="library-grid" id="bookShelfGrid">
+      </div>
 
-        <article class="book-card">
-          <div class="book-top">
-            <div class="book-icon">⚛️</div>
-            <span class="book-badge">Fisica</span>
-          </div>
-          <div class="book-name">Fisica y formulas clave</div>
-          <p class="book-desc">Leyes, ecuaciones y conceptos esenciales para reforzar los bloques de mecanica, energia y movimiento.</p>
-          <div class="book-meta">PDF privado · carpeta `formularios`</div>
-          <a href="formularios/formulario_fis.pdf" class="book-link" target="_blank">Abrir libro</a>
-        </article>
-
-        <article class="book-card">
-          <div class="book-top">
-            <div class="book-icon">📝</div>
-            <span class="book-badge">Lenguaje</span>
-          </div>
-          <div class="book-name">Gramatica y ortografia</div>
-          <p class="book-desc">Material concentrado para reforzar redaccion, uso correcto del idioma y preguntas tipicas de comprension.</p>
-          <div class="book-meta">PDF privado · carpeta `formularios`</div>
-          <a href="formularios/gramatica_y_ortografia.pdf" class="book-link" target="_blank">Abrir libro</a>
-        </article>
-
-        <article class="book-card">
-          <div class="book-top">
-            <div class="book-icon">📖</div>
-            <span class="book-badge">Lectura</span>
-          </div>
-          <div class="book-name">Comprension lectora</div>
-          <p class="book-desc">Lecturas guiadas, estrategias y practica para resolver reactivos de analisis, inferencia y vocabulario.</p>
-          <div class="book-meta">PDF privado · carpeta `formularios`</div>
-          <a href="formularios/comprension_lectora.pdf" class="book-link" target="_blank">Abrir libro</a>
-        </article>
+      <div class="empty-library" id="emptyLibraryState">
+        No encontramos libros con ese filtro. Prueba con otra palabra o vuelve a "Todos".
       </div>
     </div>
 
     <div class="lock-overlay active" id="libraryLockOverlay">
       <div class="lock-panel">
         <h3>Acceso exclusivo para alumnos</h3>
-        <p>Inicia sesión o registra a tu alumno para desbloquear la biblioteca completa, los libros de apoyo y el material privado de estudio.</p>
+        <p>Inicia sesión o registra a tu alumno para desbloquear la biblioteca completa, revisar vistas previas y descargar los libros de consulta alojados en Drive.</p>
         <div class="lock-actions">
           <button class="btn-primary" type="button" data-open-session>Iniciar sesión</button>
           <a href="https://wa.me/525640055147?text=Hola!%20Quiero%20registrar%20a%20un%20alumno%20para%20acceso%20a%20los%20libros%20privados" target="_blank" class="btn-secondary">Solicitar acceso</a>
         </div>
-        <div class="lock-note">Al iniciar sesión desde este navegador se habilita el contenido privado para el alumno.</div>
+        <div class="lock-note">Al iniciar sesión desde este navegador se habilita la estanteria completa para el alumno.</div>
       </div>
     </div>
   </div>
@@ -1151,6 +1152,188 @@
   const libraryLockOverlay = document.getElementById('libraryLockOverlay');
   const authButtons = document.querySelectorAll('[data-open-session]');
   const lockedResources = document.querySelectorAll('[data-auth-only="true"]');
+  const bookShelfGrid = document.getElementById('bookShelfGrid');
+  const librarySearch = document.getElementById('librarySearch');
+  const libraryCount = document.getElementById('libraryCount');
+  const emptyLibraryState = document.getElementById('emptyLibraryState');
+  const libraryFilterButtons = document.querySelectorAll('[data-library-filter]');
+
+  const driveBooks = [
+    { id: '1j-0eXnuMHBVGPso26NOorzRyGe-885iV', name: '375229915-Fundamentos-de-Manufactura-Moderna-1ra-Edicion-Mikell-P-Groover.pdf', size: '151.4 MB' },
+    { id: '1KcY8OR0DX0YXoT_cM-aVX69CQbwB98HK', name: 'Analisis Vectorial - R. Spiegel, S. Lipschutz.pdf', size: '4.9 MB' },
+    { id: '19N_8tFAWk_rZPHk5lkxlI2SLZe7_UmaV', name: 'Basic Probability Theory .pdf', size: '20.3 MB' },
+    { id: '1b7TMd6k8wfXjRVAiXSLI7tb7HQNyFCvt', name: 'Beiser6aEd.pdf', size: '115 MB' },
+    { id: '1tFG5yMzhn98PS1ykpIlqM9O8KADchoaZ', name: 'Cálculo de una Variable - 7ma Edición de James Stewart.pdf', size: '16.1 MB' },
+    { id: '17DmKCMJo1-yG04wYGaFLNfXZTEeADslP', name: 'calculo elemental UNAM.pdf', size: '12.5 MB' },
+    { id: '1TnBVR2Z7aEFoeGyzab3A4IydySHUyBqn', name: 'Chapra.pdf', size: '13.8 MB' },
+    { id: '1GnuL93KvyxfbqaB1Qd5NBk3GdGQD1iQx', name: 'Circuitos Eléctricos - James W. Nilsson - Uned (GEORGE2 - USCO)(1).pdf', size: '195.7 MB' },
+    { id: '1kFnZNq5WD4iV4GSUta1ZIRKH9KlD3zW7', name: 'Daniel C. Harris - Análisis Químico Cuantitativo (3ª Edición - Sexta Edición Original )-Editorial Reverte (2000).pdf', size: '11.2 MB' },
+    { id: '18FwledMRXj858pTEqO0TVXlcuQGn3Kbn', name: 'demostracion topo leonardo actuaria.pdf', size: '334 KB' },
+    { id: '13i2-4d8FK3meSR0ifWVPXtxbL642f9lV', name: 'doku.pub_calculo-de-varias-variables-james-stewartpdf.pdf', size: '12.9 MB' },
+    { id: '1Owl7vP1oYTjef3VPZimXx5Pyy2Q-AA_5', name: 'ECUACIONES DIFERENCIALES ORDINARIAS.pdf', size: '1.8 MB' },
+    { id: '1xltZnhc04EveYklNk-99y2JK6kD1G5og', name: 'EcuacionesDif.pdf', size: '12.2 MB' },
+    { id: '12sIr6JGrWWuN4IWDPAy_AW8Ind6VWE82', name: 'Edoc_site_quimica_inorganica_2a_edicion.pdf', size: '59.4 MB' },
+    { id: '1XrKZQ-jBF_vUALn4yJ8iIPlmYhWzxV9b', name: 'Electric Circuits Nilsson 7th Solucionario.pdf', size: '5.3 MB' },
+    { id: '1cvD8-R2w4BWlHDRHA8gHT-LIoAFwq57y', name: 'electromagnetismo.pdf', size: '82 KB' },
+    { id: '1dDZRlyfi_Ux9sGt0HfLsqi8YSdtx9_IC', name: 'Engineering Statistics, 5th Edition - PDF Room.pdf', size: '6.3 MB' },
+    { id: '1PWM_pBzRDtK72lQFZNbj0AX90zA3P6a8', name: 'FENOMENOS DE TRANSPORTE_BIRD_2ED_ESP.pdf', size: '50.7 MB' },
+    { id: '1O0h5IbNHFOLC-txUPRrjalfYH5UvKEVX', name: 'fenomenos de transporte.pdf', size: '25.7 MB' },
+    { id: '1ZVFOt1R1auD2xseJqLVk74Tq7-9SycPG', name: 'Física Universitaria Giancoli 4ed- Vol 2.pdf', size: '21.8 MB' },
+    { id: '1_u3b1Zxcw_B3qy0vugScLqmYPW4xum1d', name: 'Fisica_General_-_Fisica_Universitaria_Vol_2__ed_12(Sears-Zemansky).pdf', size: '33.5 MB' },
+    { id: '1SN4jW3Zc-XHIyWWZpvb5pXww-flKlhkC', name: 'Fisica-Universitaria-Sears-Zemansky-12va-Edicion-Vol1.pdf', size: '33.3 MB' },
+    { id: '17YPVh5-r08zzuH87AQ4gsYKg5mRzMmvI', name: 'Grant-R.-Fowles-George-L.-Cassiday-Analytical-Mechanics-Seventh-Edition.pdf', size: '12.3 MB' },
+    { id: '1zU9-nN9qBxLvO_zF6b9Dgj6tycobWhLz', name: 'Grossman_Algebra_Lineal_6ta_edicion.pdf', size: '5.9 MB' },
+    { id: '1kjhGxH7tE16L1vmedwzl72dd_A7UvpjN', name: 'Introducción a la probabilidad.pdf', size: '7.4 MB' },
+    { id: '14ICAFO2YQj-QqOp4zpK7D7tD87818lHp', name: 'Introduccion_Al_Analisis_de_Circuitos_Bo.pdf', size: '25.7 MB' },
+    { id: '1ROD_KuLDNH7pFuS4Ir70EXdFsJKfNSSy', name: 'Jackson - Classical Electrodynamics 3rd edition.pdf', size: '85.8 MB' },
+    { id: '1BE-lZe7Nk1bXkVJsGaOO_BkH-N8kZ0IO', name: 'lecture note stochastic processes version 2021-09-20-2.pdf', size: '855 KB' },
+    { id: '1yiQDnHVPcVbyL3oYr5dvsYsYNL46mmPx', name: 'libro circuitos electricos.pdf', size: '30.9 MB' },
+    { id: '1YOQC7u_CAPSErWCDizNfaUvevwGV1F3K', name: 'Libro Principios de Análisis Instrumental -Skoog-Holler-Nieman-5ta-Edicion.pdf', size: '100.2 MB' },
+    { id: '1QqvZRKYs9BBKvaVmSNJKhOq_tXR5JJd-', name: 'Optimización Dinámica. E. Cerdá.pdf', size: '8.1 MB' },
+    { id: '1P64PUnSewbnA5OVoXP-HU-H1P6vuAOBq', name: 'optimizacion-dianmica-cerda-20-210.pdf', size: '9 MB' },
+    { id: '1kxPrWksqVTuBCvfx3iLHag-Q3aYc-OZT', name: 'Principios_de_analisis_instrumental_Skoo.pdf', size: '16.5 MB' },
+    { id: '1ruCq-842JVHF6HEBBrlm_MzPKQu8rlyg', name: 'Principles of Heat Transfer 7th Edition By Frank Kreith And Raj M Manglik And Mark S Bohn.pdf', size: '24.8 MB' },
+    { id: '1KkUkmVj0vK-rWW6fBkjX5s6zGsd17F0A', name: 'probabilidad y estadistica libro fer.pdf', size: '196.5 MB' },
+    { id: '1iJ1pO3RGlDKaUvxphlw74XyExgnr7ad5', name: 'ProbabilidadYEstadistica_e_preliminares.pdf', size: '1.2 MB' },
+    { id: '141kRsscuAC6mWgdIRN6C9DVHpSJG41Y0', name: 'ProblemasResueltos diferencial e integral libros uam.pdf', size: '3.1 MB' },
+    { id: '1xG4q6FeEQI1kYgci4Z7ZvJNQb9GblM6X', name: 'Programacion estructurada.pdf', size: '1.4 MB' },
+    { id: '1T-XP6uiHOkzJdoJ-taUCvv6s2uXlrwRa', name: 'Química Analítica .pdf', size: '4.9 MB' },
+    { id: '1yqDp8s8Hv8RdoXVH_PZO-a_ZaO0f3bPH', name: 'Quimica Analitica ( PDFDrive ).pdf', size: '10.9 MB' },
+    { id: '1SFpFdiGb6G2LZVUyWaBoK9xE9KIkBHRc', name: 'quimica analitica 1.pdf', size: '6.1 MB' },
+    { id: '1bsoZbQHEHCDHPmUgrKeagWB6Gh5y9v_h', name: 'Química General e Inorgánica-A-1-93.pdf', size: '1.5 MB' },
+    { id: '1NZ94f-hvfzOe-D3WaK2lxeU-Rb87ynND', name: 'Química General e Inorgánica-A.pdf', size: '1.5 MB' },
+    { id: '1sbZ9k9-p_wa_6s5WaG_Uws68M5LDsBSK', name: 'Química rod.pdf', size: '460 KB' },
+    { id: '1cX4Oc8p86pb72z_BEn294MyX4QIfNmE6', name: 'SM Fundamentals of Analytical Chemistry - Skoog - 9th Edition.pdf', size: '4.4 MB' },
+    { id: '1wRvw9hyZ21NPGGGey6eGnc7dOh2hvb45', name: 'Solucionario - Circuitos Eléctricos - Dorf, Svoboda - 6ed.pdf', size: '14.3 MB' },
+    { id: '17nCI_aOXc2MCxSeCzoE8ZvenAEycXATR', name: 'Solucionario Bedford fowler.pdf', size: '35.5 MB' },
+    { id: '11eA39PnpaHcrfhDWwmJ_Cy4Ppy1rg1_0', name: 'Solucionario_Termodinamica_Cengel_7ed.pdf', size: '19.8 MB' }
+  ];
+
+  let activeLibraryFilter = 'all';
+
+  function normalizeText(text) {
+    return text
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+  }
+
+  function cleanBookTitle(rawTitle) {
+    return rawTitle
+      .replace(/\.pdf$/i, '')
+      .replace(/^doku\.pub[_-]?/i, '')
+      .replace(/_/g, ' ')
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\s+\(\d+\)$/g, '')
+      .trim();
+  }
+
+  function inferCategory(title) {
+    const text = normalizeText(title);
+    if (text.includes('quimic')) return 'quimica';
+    if (text.includes('circuit') || text.includes('electrodynamics') || text.includes('electromagnet')) return 'circuitos';
+    if (text.includes('probabilidad') || text.includes('statistics') || text.includes('stochastic')) return 'probabilidad';
+    if (text.includes('fisica') || text.includes('mechanics') || text.includes('thermodinamica') || text.includes('radiacion') || text.includes('heat transfer')) return 'fisica';
+    if (text.includes('manufactura') || text.includes('programacion') || text.includes('transporte') || text.includes('ingenier')) return 'ingenieria';
+    return 'matematicas';
+  }
+
+  function categoryLabel(category) {
+    const labels = {
+      matematicas: 'Matematicas',
+      fisica: 'Fisica',
+      quimica: 'Quimica',
+      probabilidad: 'Probabilidad',
+      circuitos: 'Circuitos',
+      ingenieria: 'Ingenieria'
+    };
+    return labels[category] || 'Consulta';
+  }
+
+  function inferDescription(title, category) {
+    const text = normalizeText(title);
+    if (text.includes('solucionario')) return 'Solucionario de apoyo para revisar procedimientos, comparar resultados y reforzar temas puntuales con ejemplos ya resueltos.';
+    if (text.includes('calculo')) return 'Material de consulta para limites, derivadas, integrales y aplicaciones clasicas, util para repaso universitario y nivel de ingreso avanzado.';
+    if (text.includes('probabilidad') || text.includes('statistics') || text.includes('stochastic')) return 'Texto de apoyo para distribuciones, variables aleatorias, inferencia y modelado, pensado para fortalecer analisis cuantitativo.';
+    if (text.includes('circuit')) return 'Libro de referencia para analisis de circuitos, leyes fundamentales, metodos de solucion y ejercicios aplicados de electricidad.';
+    if (text.includes('quimic')) return 'Consulta enfocada en conceptos, ejercicios y fundamentos de quimica para nivel medio superior y universitario.';
+    if (text.includes('fisica') || text.includes('mechanics') || text.includes('electrodynamics') || text.includes('electromagnet')) return 'Material de estudio para comprender modelos fisicos, teoria, formulacion matematica y problemas representativos.';
+    if (text.includes('manufactura') || text.includes('programacion') || text.includes('transporte') || text.includes('ingenier')) return 'Obra de apoyo tecnico con desarrollo de conceptos, procedimientos y aplicaciones frecuentes en ingenieria.';
+    if (category === 'matematicas') return 'Libro de consulta para reforzar teoria, demostraciones y ejercicios en temas matematicos de base y profundizacion.';
+    return 'Material de apoyo academico para consulta independiente, repaso guiado y profundizacion tematica.';
+  }
+
+  function inferAudience(title) {
+    const text = normalizeText(title);
+    if (text.includes('unam') || text.includes('elemental') || text.includes('problemasresueltos')) return 'Nivel puente a universidad';
+    if (text.includes('solucionario')) return 'Apoyo para acompanamiento';
+    return 'Consulta universitaria';
+  }
+
+  function buildPreviewLink(id) {
+    return `https://drive.google.com/file/d/${id}/preview`;
+  }
+
+  function buildViewLink(id) {
+    return `https://drive.google.com/file/d/${id}/view?usp=drive_link`;
+  }
+
+  function buildDownloadLink(id) {
+    return `https://drive.google.com/uc?export=download&id=${id}`;
+  }
+
+  function buildThumbnailLink(id) {
+    return `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+  }
+
+  function createBookCard(book) {
+    const title = cleanBookTitle(book.name);
+    const category = inferCategory(title);
+    const description = inferDescription(title, category);
+    const audience = inferAudience(title);
+
+    return `
+      <article class="book-card" data-book-category="${category}" data-book-search="${normalizeText(`${title} ${category} ${description}`)}">
+        <a class="book-preview" href="${buildPreviewLink(book.id)}" target="_blank" title="Previsualizar ${title}">
+          <img src="${buildThumbnailLink(book.id)}" alt="Portada de ${title}" loading="lazy" referrerpolicy="no-referrer">
+        </a>
+        <div class="book-top">
+          <span class="book-badge">${categoryLabel(category)}</span>
+          <span class="book-size">${book.size}</span>
+        </div>
+        <div class="book-name">${title}</div>
+        <p class="book-desc">${description}</p>
+        <div class="book-meta">${audience}</div>
+        <div class="book-actions">
+          <a href="${buildViewLink(book.id)}" class="book-link secondary" target="_blank">Vista previa</a>
+          <a href="${buildDownloadLink(book.id)}" class="book-link" target="_blank">Descargar</a>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderLibrary() {
+    bookShelfGrid.innerHTML = driveBooks.map(createBookCard).join('');
+    applyLibraryFilters();
+  }
+
+  function applyLibraryFilters() {
+    const query = normalizeText(librarySearch.value.trim());
+    const cards = bookShelfGrid.querySelectorAll('.book-card');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const matchesCategory = activeLibraryFilter === 'all' || card.dataset.bookCategory === activeLibraryFilter;
+      const matchesQuery = !query || card.dataset.bookSearch.includes(query);
+      const shouldShow = matchesCategory && matchesQuery;
+
+      card.classList.toggle('hidden', !shouldShow);
+      if (shouldShow) visibleCount++;
+    });
+
+    libraryCount.textContent = `${visibleCount} libro${visibleCount === 1 ? '' : 's'}`;
+    emptyLibraryState.classList.toggle('active', visibleCount === 0);
+  }
 
   const getUsers = () => {
     try {
@@ -1322,6 +1505,16 @@
     });
   });
 
+  librarySearch.addEventListener('input', applyLibraryFilters);
+  libraryFilterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      libraryFilterButtons.forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      activeLibraryFilter = button.dataset.libraryFilter;
+      applyLibraryFilters();
+    });
+  });
+
   // ── FILTRO RECURSOS ──
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1338,6 +1531,7 @@
     });
   });
 
+  renderLibrary();
   updateProtectedContent();
 </script>
 </body>
