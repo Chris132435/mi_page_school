@@ -93,8 +93,76 @@
   .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
   .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; color: var(--ink); transition: color .2s; }
   .nav-links a:hover { color: var(--accent); }
+  .nav-actions { display: flex; align-items: center; gap: 12px; }
   .nav-cta { background: var(--ink) !important; color: var(--cream) !important; padding: 9px 20px; border-radius: 4px; transition: background .2s !important; }
   .nav-cta:hover { background: var(--accent) !important; }
+  .nav-login {
+    background: transparent; color: var(--ink); padding: 9px 18px;
+    border-radius: 4px; border: 1.5px solid #bbb; cursor: pointer;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  .nav-login:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-user {
+    display: none; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px;
+    background: rgba(232,64,28,.09); border: 1px solid rgba(232,64,28,.28);
+    color: var(--ink); font-size: 0.8rem; font-weight: 700;
+  }
+  .nav-user.active { display: inline-flex; }
+  .nav-user span { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .logout-btn {
+    background: transparent; border: none; color: var(--accent); cursor: pointer;
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0;
+  }
+  .menu-toggle {
+    display: none; width: 48px; height: 48px; border-radius: 8px;
+    border: 1.5px solid #2a2a2a; background: var(--ink); color: var(--cream);
+    align-items: center; justify-content: center; cursor: pointer; flex-direction: column; gap: 5px;
+    transition: transform .2s, background .2s, border-color .2s;
+  }
+  .menu-toggle:hover { transform: translateY(-1px); background: var(--accent); border-color: var(--accent); }
+  .menu-toggle span { width: 18px; height: 2px; background: currentColor; border-radius: 999px; transition: transform .25s, opacity .25s; }
+  .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(6px);
+    opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 120;
+  }
+  .mobile-menu-overlay.active { opacity: 1; pointer-events: auto; }
+  .mobile-menu {
+    position: fixed; top: 0; right: 0; width: min(360px, 88vw); height: 100vh; z-index: 130;
+    background: #111; color: #f5f0e8; padding: 24px; display: flex; flex-direction: column; gap: 24px;
+    transform: translateX(100%); transition: transform .28s ease; border-left: 2px solid rgba(255,255,255,.08);
+    box-shadow: -20px 0 40px rgba(0,0,0,.3);
+  }
+  .mobile-menu.active { transform: translateX(0); }
+  .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .mobile-menu-close {
+    width: 42px; height: 42px; border-radius: 8px; border: 1px solid #333; background: transparent;
+    color: #f5f0e8; cursor: pointer; font-size: 1.4rem; line-height: 1;
+  }
+  .mobile-menu-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .mobile-menu-links a, .mobile-menu-links button {
+    width: 100%; text-align: left; padding: 14px 16px; border-radius: 10px; text-decoration: none;
+    color: #f5f0e8; border: 1px solid #242424; background: #171717; font-size: 0.92rem;
+    font-weight: 700; letter-spacing: .8px; text-transform: uppercase; cursor: pointer;
+  }
+  .mobile-menu-links a:hover, .mobile-menu-links button:hover { border-color: var(--accent); color: var(--accent); }
+  .mobile-user-box {
+    display: none; gap: 10px; flex-direction: column; padding: 18px; border-radius: 12px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  }
+  .mobile-user-box.active { display: flex; }
+  .mobile-user-box small { color: #999; text-transform: uppercase; letter-spacing: 1.4px; font-weight: 700; }
+  .mobile-user-box strong { font-size: 0.95rem; color: #fff; }
+  .mobile-session-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .mobile-session-actions button {
+    flex: 1; min-width: 120px; padding: 12px 14px; border-radius: 8px; border: none;
+    font-size: 0.82rem; font-weight: 700; cursor: pointer; letter-spacing: .8px; text-transform: uppercase;
+  }
+  .mobile-login-btn { background: var(--accent); color: #fff; }
+  .mobile-logout-btn { background: #2b2b2b; color: #f5f0e8; }
 
   /* ── HERO ── */
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; overflow: hidden; }
@@ -262,6 +330,126 @@
   .dark .coming-banner p { color: #888; }
   .coming-banner strong { color: var(--ink); transition: color .3s; }
 
+  /* ── BIBLIOTECA ── */
+  .biblioteca { padding: 100px 7%; background: linear-gradient(180deg, #111 0%, #171717 100%); color: #f5f0e8; position: relative; overflow: hidden; }
+  .biblioteca::before {
+    content: 'BIBLIOTECA'; position: absolute; top: 18px; right: -28px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 10rem; line-height: 1;
+    color: rgba(255,255,255,.035); pointer-events: none;
+  }
+  .biblioteca-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 42px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .biblioteca .section-label { color: #f0b429; }
+  .biblioteca .section-title { color: #f5f0e8; }
+  .private-chip {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px;
+    background: rgba(240,180,41,.12); border: 1px solid rgba(240,180,41,.35); color: #f0b429;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  }
+  .library-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; position: relative; z-index: 1; }
+  .book-card {
+    background: rgba(255,255,255,.04); border: 1.5px solid rgba(255,255,255,.08); border-radius: 14px;
+    padding: 24px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;
+    transition: transform .25s, border-color .25s, box-shadow .25s;
+  }
+  .book-card:hover { transform: translateY(-5px); border-color: rgba(240,180,41,.45); box-shadow: 0 18px 38px rgba(0,0,0,.22); }
+  .book-top { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+  .book-icon {
+    width: 52px; height: 52px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; background: rgba(240,180,41,.14); color: #f0b429;
+  }
+  .book-badge {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 999px; background: rgba(28,108,232,.18); color: #7eb1ff;
+  }
+  .book-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; letter-spacing: .8px; color: #fff; line-height: 1.1; }
+  .book-desc { color: #aaa; font-size: 0.88rem; line-height: 1.65; }
+  .book-meta { color: #777; font-size: 0.78rem; }
+  .book-link {
+    margin-top: auto; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 18px; border-radius: 8px; background: #f0b429; color: #111; text-decoration: none;
+    font-weight: 800; font-size: 0.82rem; letter-spacing: .8px; text-transform: uppercase; transition: transform .2s, filter .2s;
+  }
+  .book-link:hover { transform: translateY(-1px); filter: brightness(1.05); }
+  .private-wrapper { position: relative; }
+  .private-content.is-locked { filter: blur(3px); opacity: .3; pointer-events: none; user-select: none; }
+  .lock-overlay {
+    position: absolute; inset: 0; z-index: 3; display: none; align-items: center; justify-content: center;
+    padding: 24px; text-align: center;
+  }
+  .lock-overlay.active { display: flex; }
+  .lock-panel {
+    max-width: 520px; background: rgba(10,10,10,.92); border: 1.5px solid rgba(240,180,41,.25); border-radius: 16px;
+    padding: 30px 28px; box-shadow: 0 20px 44px rgba(0,0,0,.3);
+  }
+  .lock-panel h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; font-size: 2rem; color: #f5f0e8; margin-bottom: 10px; }
+  .lock-panel p { color: #b6b6b6; line-height: 1.7; margin-bottom: 22px; }
+  .lock-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .lock-note { margin-top: 14px; color: #8f8f8f; font-size: 0.78rem; }
+  .resource-lock {
+    display: none; align-items: center; justify-content: center; padding: 7px 14px; border-radius: 6px;
+    background: #2b2b2b; color: #f0b429; font-size: 0.76rem; font-weight: 700; letter-spacing: .5px;
+  }
+  .resource-lock.active { display: inline-flex; }
+  .resource-locked .recurso-download { display: none; }
+  .resource-locked.unlocked .resource-lock { display: none; }
+  .resource-locked.unlocked .recurso-download { display: inline-flex; }
+
+  /* ── SESION MODAL ── */
+  .session-modal {
+    position: fixed; inset: 0; z-index: 150; display: none; align-items: center; justify-content: center;
+    background: rgba(0,0,0,.55); backdrop-filter: blur(8px); padding: 20px;
+  }
+  .session-modal.active { display: flex; }
+  .session-card {
+    width: min(520px, 100%); background: #f5f0e8; color: #111; border-radius: 18px; overflow: hidden;
+    border: 2px solid #111; box-shadow: 0 24px 60px rgba(0,0,0,.35);
+  }
+  .dark .session-card { background: #171717; color: #f5f0e8; border-color: #2b2b2b; }
+  .session-top { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; padding: 24px 24px 0; }
+  .session-top h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 1px; line-height: 1; }
+  .session-top p { color: #666; margin-top: 8px; font-size: 0.95rem; line-height: 1.5; }
+  .dark .session-top p { color: #9a9a9a; }
+  .session-close {
+    width: 42px; height: 42px; border-radius: 10px; border: 1px solid #ccc; background: transparent;
+    color: inherit; font-size: 1.4rem; cursor: pointer; line-height: 1;
+  }
+  .dark .session-close { border-color: #333; }
+  .session-tabs { display: flex; gap: 12px; padding: 24px; padding-bottom: 0; }
+  .session-tab {
+    flex: 1; border: 1.5px solid #d0d0d0; background: transparent; color: inherit;
+    padding: 12px 14px; border-radius: 10px; font-weight: 800; font-size: 0.84rem; letter-spacing: .8px;
+    text-transform: uppercase; cursor: pointer; transition: background .2s, border-color .2s, color .2s;
+  }
+  .session-tab.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .dark .session-tab { border-color: #333; }
+  .dark .session-tab.active { background: #f0ece4; color: #111; border-color: #f0ece4; }
+  .session-body { padding: 24px; }
+  .session-form { display: none; }
+  .session-form.active { display: block; }
+  .session-form-grid { display: grid; gap: 16px; }
+  .session-field label {
+    display: block; margin-bottom: 8px; font-size: 0.78rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1px; color: #555;
+  }
+  .dark .session-field label { color: #aaa; }
+  .session-field input {
+    width: 100%; padding: 14px 15px; border-radius: 10px; border: 1.5px solid #d5d0c8;
+    background: rgba(255,255,255,.7); color: #111; font-size: 0.95rem; outline: none;
+  }
+  .dark .session-field input { background: #121212; border-color: #2d2d2d; color: #f5f0e8; }
+  .session-field input:focus { border-color: var(--accent); }
+  .session-submit {
+    width: 100%; margin-top: 18px; border: none; border-radius: 10px; padding: 15px 18px;
+    background: var(--accent); color: #fff; font-size: 0.9rem; font-weight: 800;
+    letter-spacing: .8px; text-transform: uppercase; cursor: pointer;
+  }
+  .session-help { margin-top: 14px; color: #777; line-height: 1.6; font-size: 0.82rem; }
+  .dark .session-help { color: #9a9a9a; }
+  .session-message {
+    min-height: 24px; margin-top: 16px; font-size: 0.84rem; font-weight: 700; color: var(--accent);
+  }
+  .session-message.success { color: #1eb96b; }
+
   /* ── UNIVERSIDADES ── */
   .unis { padding: 100px 7%; background: #0d0d0d; color: #f5f0e8; overflow: hidden; position: relative; transition: background .35s; }
   .dark .unis { background: #080808; }
@@ -324,10 +512,21 @@
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
-    .nav-links li:not(:last-child):not(.toggle-li) { display: none; }
-    .toggle-li { display: flex !important; }
+    .nav-links { display: none; }
+    .nav-actions { display: none; }
+    .menu-toggle { display: inline-flex; }
     .horarios-inner { grid-template-columns: 1fr; }
     .unis::before { display: none; }
+    .biblioteca::before { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 14px 5%; }
+    .hero-left { padding: 110px 7% 72px; }
+    .hero h1 { font-size: clamp(3rem, 15vw, 4.5rem); }
+    .hero-stats { gap: 18px; flex-wrap: wrap; }
+    .session-top, .session-tabs, .session-body { padding-left: 18px; padding-right: 18px; }
+    .lock-panel { padding: 24px 20px; }
   }
 </style>
 </head>
@@ -341,10 +540,46 @@
     <li><a href="#universidades">Universidades</a></li>
     <li><a href="#horarios">Horarios</a></li>
     <li><a href="#recursos">Recursos</a></li>
-
-    <li><a href="https://wa.me/525640055147?text=Hola!%20Quiero%20información%20sobre%20los%20cursos%20de%20ingreso" target="_blank" class="nav-cta">Agendar clase</a></li>
+    <li><a href="#biblioteca">Libros</a></li>
   </ul>
+  <div class="nav-actions">
+    <button class="nav-login" type="button" id="openSessionBtn">Iniciar sesión</button>
+    <div class="nav-user" id="navUserBox">
+      <span id="navUserEmail">Alumno</span>
+      <button class="logout-btn" type="button" id="logoutBtn">Salir</button>
+    </div>
+    <a href="https://wa.me/525640055147?text=Hola!%20Quiero%20información%20sobre%20los%20cursos%20de%20ingreso" target="_blank" class="nav-cta">Agendar clase</a>
+  </div>
+  <button class="menu-toggle" type="button" id="menuToggle" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <a href="#" class="logo-text" style="color:#f5f0e8"><span class="logo-sym">∫</span>chool<span class="logo-to" style="color:#bbb"> t</span><span class="logo-omega">Ω</span><span class="logo-to" style="color:#bbb"> H</span><span class="logo-sub">₂</span>Ome</a>
+    <button class="mobile-menu-close" type="button" id="mobileMenuClose" aria-label="Cerrar menu">×</button>
+  </div>
+  <div class="mobile-user-box" id="mobileUserBox">
+    <small>Sesion activa</small>
+    <strong id="mobileUserEmail">Alumno</strong>
+    <div class="mobile-session-actions">
+      <button class="mobile-logout-btn" type="button" id="mobileLogoutBtn">Cerrar sesión</button>
+    </div>
+  </div>
+  <ul class="mobile-menu-links">
+    <li><a href="#cursos" class="mobile-link">Cursos</a></li>
+    <li><a href="#universidades" class="mobile-link">Universidades</a></li>
+    <li><a href="#horarios" class="mobile-link">Horarios</a></li>
+    <li><a href="#recursos" class="mobile-link">Recursos</a></li>
+    <li><a href="#biblioteca" class="mobile-link">Libros privados</a></li>
+    <li><button type="button" id="mobileLoginBtn" class="mobile-login-btn">Iniciar sesión</button></li>
+    <li><a href="https://wa.me/525640055147?text=Hola!%20Quiero%20información%20sobre%20los%20cursos%20de%20ingreso" target="_blank">Agendar clase</a></li>
+  </ul>
+</aside>
 
 <!-- HERO -->
 <section class="hero">
@@ -528,6 +763,7 @@
     <button class="filter-btn" data-filter="his">🗺️ Historia</button>
     <button class="filter-btn" data-filter="ingreso">🎯 Ingreso</button>
     <button class="filter-btn" data-filter="tabla">📊 Tablas</button>
+    <button class="filter-btn" data-filter="privado">🔒 Exclusivos</button>
   </div>
 
   <!-- Tarjetas de recursos -->
@@ -642,7 +878,7 @@
     </div>
 
     <!-- INGRESO -->
-    <div class="recurso-card rc-ingreso" data-cat="ingreso">
+    <div class="recurso-card rc-ingreso resource-locked" data-cat="ingreso privado" data-auth-only="true">
       <div class="recurso-top">
         <div class="recurso-icon-wrap ri-ing">🎯</div>
         <span class="recurso-tipo tipo-ejerc">Simulacro</span>
@@ -650,8 +886,9 @@
       <div class="recurso-name">Simulacro COMIPEMS — Examen completo</div>
       <p class="recurso-desc">128 reactivos tipo COMIPEMS con clave de respuestas. Cronometrado para práctica real.</p>
       <div class="recurso-footer">
-        <span class="recurso-meta">📄 PDF · 32 págs.</span>
-        <a href="#" class="recurso-download">⬇ Descargar</a>
+        <span class="recurso-meta">🔒 Solo alumnos con sesión</span>
+        <a href="formularios/tabla.pdf" class="recurso-download" target="_blank">⬇ Descargar</a>
+        <button class="resource-lock" type="button" data-open-session>🔒 Inicia sesión</button>
       </div>
     </div>
 
@@ -697,15 +934,110 @@
   </div>
 
   <!-- Banner informativo -->
-  <div class="coming-banner">
-    <div class="coming-banner-icon">📬</div>
-    <p><strong>¿Necesitas un material específico?</strong><br>
+    <div class="coming-banner">
+      <div class="coming-banner-icon">📬</div>
+      <p><strong>¿Necesitas un material específico?</strong><br>
     Estamos agregando guías, tablas y ejercicios constantemente. Si buscas algo en particular o quieres recibir los nuevos recursos directo en tu celular, escríbenos por WhatsApp y te lo enviamos.
     <br><br>
     <a href="https://wa.me/525640055147?text=Hola!%20Quiero%20recibir%20recursos%20de%20estudio%20de%20∫chool%20tΩ%20H₂Ome" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-size:0.85rem;padding:12px 24px;">
       📲 Recibir recursos por WhatsApp
     </a>
     </p>
+  </div>
+</section>
+
+<!-- BIBLIOTECA PRIVADA -->
+<section class="biblioteca" id="biblioteca">
+  <div class="biblioteca-header">
+    <div>
+      <div class="section-label">Acceso para alumnos</div>
+      <h2 class="section-title">Biblioteca privada</h2>
+    </div>
+    <div class="private-chip">🔒 Libros y formularios exclusivos</div>
+  </div>
+
+  <div class="private-wrapper">
+    <div class="private-content is-locked" id="privateLibraryContent">
+      <div class="library-grid">
+        <article class="book-card">
+          <div class="book-top">
+            <div class="book-icon">📘</div>
+            <span class="book-badge">Matematicas</span>
+          </div>
+          <div class="book-name">Algebra esencial</div>
+          <p class="book-desc">Resumen de formulas, operaciones clave y ejercicios base para alumnos que empiezan su repaso de ingreso.</p>
+          <div class="book-meta">PDF privado · carpeta `formularios`</div>
+          <a href="formularios/algebra_formulario.pdf" class="book-link" target="_blank">Abrir libro</a>
+        </article>
+
+        <article class="book-card">
+          <div class="book-top">
+            <div class="book-icon">📐</div>
+            <span class="book-badge">Geometria</span>
+          </div>
+          <div class="book-name">Formulario de geometria</div>
+          <p class="book-desc">Coleccion de formulas y relaciones geometricas para consulta rapida durante el estudio y los simulacros.</p>
+          <div class="book-meta">PDF privado · carpeta `formularios`</div>
+          <a href="formularios/formulario_geometria.pdf" class="book-link" target="_blank">Abrir libro</a>
+        </article>
+
+        <article class="book-card">
+          <div class="book-top">
+            <div class="book-icon">🧪</div>
+            <span class="book-badge">Ciencias</span>
+          </div>
+          <div class="book-name">Quimica de apoyo</div>
+          <p class="book-desc">Material de referencia para formulas, conversiones, nomenclatura y temas frecuentes en examenes de ingreso.</p>
+          <div class="book-meta">PDF privado · carpeta `formularios`</div>
+          <a href="formularios/guia_quimica.pdf" class="book-link" target="_blank">Abrir libro</a>
+        </article>
+
+        <article class="book-card">
+          <div class="book-top">
+            <div class="book-icon">⚛️</div>
+            <span class="book-badge">Fisica</span>
+          </div>
+          <div class="book-name">Fisica y formulas clave</div>
+          <p class="book-desc">Leyes, ecuaciones y conceptos esenciales para reforzar los bloques de mecanica, energia y movimiento.</p>
+          <div class="book-meta">PDF privado · carpeta `formularios`</div>
+          <a href="formularios/formulario_fis.pdf" class="book-link" target="_blank">Abrir libro</a>
+        </article>
+
+        <article class="book-card">
+          <div class="book-top">
+            <div class="book-icon">📝</div>
+            <span class="book-badge">Lenguaje</span>
+          </div>
+          <div class="book-name">Gramatica y ortografia</div>
+          <p class="book-desc">Material concentrado para reforzar redaccion, uso correcto del idioma y preguntas tipicas de comprension.</p>
+          <div class="book-meta">PDF privado · carpeta `formularios`</div>
+          <a href="formularios/gramatica_y_ortografia.pdf" class="book-link" target="_blank">Abrir libro</a>
+        </article>
+
+        <article class="book-card">
+          <div class="book-top">
+            <div class="book-icon">📖</div>
+            <span class="book-badge">Lectura</span>
+          </div>
+          <div class="book-name">Comprension lectora</div>
+          <p class="book-desc">Lecturas guiadas, estrategias y practica para resolver reactivos de analisis, inferencia y vocabulario.</p>
+          <div class="book-meta">PDF privado · carpeta `formularios`</div>
+          <a href="formularios/comprension_lectora.pdf" class="book-link" target="_blank">Abrir libro</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="lock-overlay active" id="libraryLockOverlay">
+      <div class="lock-panel">
+        <h3>Acceso exclusivo para alumnos</h3>
+        <p>Inicia sesión o registra a tu alumno para desbloquear la biblioteca completa, los libros de apoyo y el material privado de estudio.</p>
+        <div class="lock-actions">
+          <button class="btn-primary" type="button" data-open-session>Iniciar sesión</button>
+          <a href="https://wa.me/525640055147?text=Hola!%20Quiero%20registrar%20a%20un%20alumno%20para%20acceso%20a%20los%20libros%20privados" target="_blank" class="btn-secondary">Solicitar acceso</a>
+        </div>
+        <div class="lock-note">Al iniciar sesión desde este navegador se habilita el contenido privado para el alumno.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -735,9 +1067,260 @@
   </a>
 </div>
 
+<div class="session-modal" id="sessionModal" aria-hidden="true">
+  <div class="session-card">
+    <div class="session-top">
+      <div>
+        <h3>Portal de alumnos</h3>
+        <p>Acceso a libros, simulacros y material complementario para estudio desde casa.</p>
+      </div>
+      <button class="session-close" type="button" id="sessionCloseBtn" aria-label="Cerrar">×</button>
+    </div>
+
+    <div class="session-tabs">
+      <button class="session-tab active" type="button" data-session-tab="login">Iniciar sesión</button>
+      <button class="session-tab" type="button" data-session-tab="register">Registro</button>
+    </div>
+
+    <div class="session-body">
+      <form class="session-form active" id="loginForm">
+        <div class="session-form-grid">
+          <div class="session-field">
+            <label for="loginEmail">Correo del alumno</label>
+            <input type="email" id="loginEmail" required placeholder="alumno@correo.com">
+          </div>
+          <div class="session-field">
+            <label for="loginPassword">Contrasena</label>
+            <input type="password" id="loginPassword" required placeholder="Ingresa tu contrasena">
+          </div>
+        </div>
+        <button class="session-submit" type="submit">Entrar al contenido</button>
+      </form>
+
+      <form class="session-form" id="registerForm">
+        <div class="session-form-grid">
+          <div class="session-field">
+            <label for="registerName">Nombre del alumno</label>
+            <input type="text" id="registerName" required placeholder="Nombre completo">
+          </div>
+          <div class="session-field">
+            <label for="registerEmail">Correo del alumno</label>
+            <input type="email" id="registerEmail" required placeholder="alumno@correo.com">
+          </div>
+          <div class="session-field">
+            <label for="registerPassword">Contrasena</label>
+            <input type="password" id="registerPassword" required minlength="4" placeholder="Minimo 4 caracteres">
+          </div>
+        </div>
+        <button class="session-submit" type="submit">Registrar alumno</button>
+      </form>
+
+      <div class="session-message" id="sessionMessage"></div>
+      <p class="session-help">Este acceso funciona dentro del navegador para abrir el material privado. Si luego quieres validarlo con alumnos reales en linea, el siguiente paso seria conectarlo a una base de datos o formulario externo.</p>
+    </div>
+  </div>
+</div>
+
 <script>
   // Modo oscuro permanente
   document.documentElement.classList.add('dark');
+
+  const STORAGE_USERS_KEY = 'schoolToHomeUsers';
+  const STORAGE_SESSION_KEY = 'schoolToHomeActiveUser';
+
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  const sessionModal = document.getElementById('sessionModal');
+  const sessionCloseBtn = document.getElementById('sessionCloseBtn');
+  const openSessionBtn = document.getElementById('openSessionBtn');
+  const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
+  const navUserBox = document.getElementById('navUserBox');
+  const navUserEmail = document.getElementById('navUserEmail');
+  const mobileUserBox = document.getElementById('mobileUserBox');
+  const mobileUserEmail = document.getElementById('mobileUserEmail');
+  const sessionTabs = document.querySelectorAll('[data-session-tab]');
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  const sessionMessage = document.getElementById('sessionMessage');
+  const privateLibraryContent = document.getElementById('privateLibraryContent');
+  const libraryLockOverlay = document.getElementById('libraryLockOverlay');
+  const authButtons = document.querySelectorAll('[data-open-session]');
+  const lockedResources = document.querySelectorAll('[data-auth-only="true"]');
+
+  const getUsers = () => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_USERS_KEY)) || [];
+    } catch (error) {
+      return [];
+    }
+  };
+
+  const saveUsers = (users) => localStorage.setItem(STORAGE_USERS_KEY, JSON.stringify(users));
+  const getActiveUser = () => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_SESSION_KEY));
+    } catch (error) {
+      return null;
+    }
+  };
+  const saveActiveUser = (user) => localStorage.setItem(STORAGE_SESSION_KEY, JSON.stringify(user));
+  const clearActiveUser = () => localStorage.removeItem(STORAGE_SESSION_KEY);
+
+  function setSessionMessage(message, isSuccess = false) {
+    sessionMessage.textContent = message;
+    sessionMessage.classList.toggle('success', isSuccess);
+  }
+
+  function openSessionModal(defaultTab = 'login') {
+    sessionModal.classList.add('active');
+    sessionModal.setAttribute('aria-hidden', 'false');
+    setSessionMessage('');
+    sessionTabs.forEach(tab => {
+      const isActive = tab.dataset.sessionTab === defaultTab;
+      tab.classList.toggle('active', isActive);
+    });
+    loginForm.classList.toggle('active', defaultTab === 'login');
+    registerForm.classList.toggle('active', defaultTab === 'register');
+  }
+
+  function closeSessionModal() {
+    sessionModal.classList.remove('active');
+    sessionModal.setAttribute('aria-hidden', 'true');
+  }
+
+  function openMobileMenu() {
+    mobileMenu.classList.add('active');
+    mobileMenuOverlay.classList.add('active');
+    menuToggle.classList.add('active');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('active');
+    mobileMenuOverlay.classList.remove('active');
+    menuToggle.classList.remove('active');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
+
+  function updateProtectedContent() {
+    const activeUser = getActiveUser();
+    const isLoggedIn = Boolean(activeUser && activeUser.email);
+
+    navUserBox.classList.toggle('active', isLoggedIn);
+    openSessionBtn.style.display = isLoggedIn ? 'none' : 'inline-flex';
+    mobileUserBox.classList.toggle('active', isLoggedIn);
+    mobileLoginBtn.style.display = isLoggedIn ? 'none' : 'block';
+
+    if (isLoggedIn) {
+      navUserEmail.textContent = activeUser.name || activeUser.email;
+      mobileUserEmail.textContent = activeUser.name || activeUser.email;
+      privateLibraryContent.classList.remove('is-locked');
+      libraryLockOverlay.classList.remove('active');
+    } else {
+      privateLibraryContent.classList.add('is-locked');
+      libraryLockOverlay.classList.add('active');
+    }
+
+    lockedResources.forEach(card => {
+      card.classList.toggle('unlocked', isLoggedIn);
+      const lockButton = card.querySelector('.resource-lock');
+      if (lockButton) lockButton.classList.toggle('active', !isLoggedIn);
+    });
+  }
+
+  function loginUser(email, password) {
+    const users = getUsers();
+    const foundUser = users.find(user => user.email === email && user.password === password);
+
+    if (!foundUser) {
+      setSessionMessage('No encontramos ese registro. Revisa tus datos o crea la cuenta del alumno.');
+      return;
+    }
+
+    saveActiveUser({ name: foundUser.name, email: foundUser.email });
+    updateProtectedContent();
+    setSessionMessage('Sesion iniciada correctamente.', true);
+    loginForm.reset();
+    setTimeout(() => {
+      closeSessionModal();
+      closeMobileMenu();
+    }, 500);
+  }
+
+  function registerUser(name, email, password) {
+    const users = getUsers();
+    const alreadyExists = users.some(user => user.email === email);
+
+    if (alreadyExists) {
+      setSessionMessage('Ese correo ya esta registrado. Prueba iniciar sesion.');
+      return;
+    }
+
+    users.push({ name, email, password });
+    saveUsers(users);
+    saveActiveUser({ name, email });
+    updateProtectedContent();
+    setSessionMessage('Alumno registrado y acceso activado.', true);
+    registerForm.reset();
+    setTimeout(() => {
+      closeSessionModal();
+      closeMobileMenu();
+    }, 500);
+  }
+
+  menuToggle.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('active')) closeMobileMenu();
+    else openMobileMenu();
+  });
+
+  mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+  mobileMenuClose.addEventListener('click', closeMobileMenu);
+  mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+  openSessionBtn.addEventListener('click', () => openSessionModal('login'));
+  mobileLoginBtn.addEventListener('click', () => openSessionModal('login'));
+  authButtons.forEach(button => button.addEventListener('click', () => openSessionModal('login')));
+  sessionCloseBtn.addEventListener('click', closeSessionModal);
+  sessionModal.addEventListener('click', (event) => {
+    if (event.target === sessionModal) closeSessionModal();
+  });
+
+  sessionTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTab = tab.dataset.sessionTab;
+      openSessionModal(targetTab);
+    });
+  });
+
+  loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    loginUser(
+      document.getElementById('loginEmail').value.trim().toLowerCase(),
+      document.getElementById('loginPassword').value
+    );
+  });
+
+  registerForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    registerUser(
+      document.getElementById('registerName').value.trim(),
+      document.getElementById('registerEmail').value.trim().toLowerCase(),
+      document.getElementById('registerPassword').value
+    );
+  });
+
+  [logoutBtn, mobileLogoutBtn].forEach(button => {
+    button.addEventListener('click', () => {
+      clearActiveUser();
+      updateProtectedContent();
+      closeMobileMenu();
+    });
+  });
 
   // ── FILTRO RECURSOS ──
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -754,6 +1337,8 @@
       });
     });
   });
+
+  updateProtectedContent();
 </script>
 </body>
 </html>
