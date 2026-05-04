@@ -1289,11 +1289,7 @@
   }
 
   async function loadBooksFromSupabase() {
-    const { data, error } = await _supabase
-      .from('libros_drive')
-      .select('titulo, descripcion, categoria, tamano, drive_file_id, autor, visible')
-      .eq('visible', true)
-      .order('titulo', { ascending: true });
+    const { data, error } = await _supabase.rpc('obtener_libros_autorizados');
 
     if (error) throw error;
 
