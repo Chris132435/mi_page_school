@@ -1,0 +1,7 @@
+email,nombre,activo,rol,grupo,telefono,estatus,fecha_inicio,fecha_fin,notas
+ccarbajal@abcsc.mx,Chrisitian García,true,alumno,Matematicas Sabatino,5512345678,activo,2026-05-03,2026-08-31,Acceso vigente a biblioteca y materiales
+alumno2@ejemplo.com,Carlos Ramirez,true,alumno,Ciencias Domingo,5598765432,activo,2026-05-03,2026-07-15,Renovar al cierre del curso intensivo
+alumno3@ejemplo.com,Daniela Torres,false,alumno,Ingreso UNAM,5544455566,baja,2026-01-10,2026-04-30,Alumno dado de baja por termino de curso
+alumno4@ejemplo.com,Emilio Vargas,true,alumno,Asesoria Personalizada,5533322211,pendiente,2026-05-03,2026-06-30,Pendiente confirmacion de pago final
+coordinacion@ejemplo.com,Coordinacion Academica,true,admin,Administracion,5500000000,activo,2026-05-03,,Usuario interno para supervision
+cristhian.carbajal6@gmail.com,Cristhian Carbajal,true,alumno,Matematicas Sabatino,5559305793,activo,2026-05-03,2027-08-31,Acceso vigente a biblioteca y materiales
