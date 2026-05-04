@@ -1245,14 +1245,15 @@
   }
 
   async function fetchAuthorizedStudent(email) {
-    const { data, error } = await _supabase
-      .from('alumnos_autorizados')
-      .select('email, nombre, activo, estatus, fecha_inicio, fecha_fin')
-      .eq('email', email)
-      .maybeSingle();
+    const { data, error } = await _supabase.rpc('verificar_alumno_autorizado', {
+      correo: email
+    });
 
     if (error) throw error;
-    return data;
+    if (Array.isArray(data)) {
+      return data[0] || null;
+    }
+    return data || null;
   }
 
   function studentAccessState(studentRecord) {
