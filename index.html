@@ -330,6 +330,35 @@
   .dark .coming-banner p { color: #888; }
   .coming-banner strong { color: var(--ink); transition: color .3s; }
 
+  /* ── REDES ── */
+  .social-strip {
+    padding: 72px 7%; background: #141414; color: #f5f0e8; border-top: 1px solid rgba(255,255,255,.05);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .social-strip-inner {
+    display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center;
+  }
+  .social-copy .section-label { color: #f0b429; }
+  .social-copy .section-title { color: #f5f0e8; }
+  .social-copy p { color: #a5a5a5; line-height: 1.8; max-width: 560px; margin-top: 14px; }
+  .social-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .social-card {
+    display: flex; flex-direction: column; gap: 12px; padding: 22px; border-radius: 14px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); text-decoration: none;
+    color: #f5f0e8; transition: transform .22s, border-color .22s, box-shadow .22s;
+  }
+  .social-card:hover { transform: translateY(-4px); border-color: rgba(240,180,41,.45); box-shadow: 0 18px 32px rgba(0,0,0,.2); }
+  .social-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .social-icon {
+    width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 12px; font-size: 1.3rem; font-weight: 800;
+  }
+  .social-facebook .social-icon { background: rgba(24,119,242,.14); color: #7eb1ff; }
+  .social-instagram .social-icon { background: rgba(232,64,140,.14); color: #ff7ab7; }
+  .social-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 1px; }
+  .social-handle { color: #888; font-size: 0.82rem; line-height: 1.5; }
+  .social-jump { color: #f0b429; font-size: 0.8rem; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; }
+
   /* ── BIBLIOTECA ── */
   .biblioteca { padding: 100px 7%; background: linear-gradient(180deg, #111 0%, #171717 100%); color: #f5f0e8; position: relative; overflow: hidden; }
   .biblioteca::before {
@@ -554,6 +583,14 @@
   .dark footer { background: #030303; }
   .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 3px; color: #f5f0e8; margin-bottom: 12px; }
   .footer-logo span { color: var(--accent); }
+  .footer-socials {
+    margin-top: 18px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+  }
+  .footer-social-link {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 999px;
+    text-decoration: none; color: #ddd; border: 1px solid #242424; background: #111; transition: border-color .2s, color .2s, transform .2s;
+  }
+  .footer-social-link:hover { border-color: var(--accent); color: #fff; transform: translateY(-1px); }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -566,6 +603,7 @@
     .horarios-inner { grid-template-columns: 1fr; }
     .unis::before { display: none; }
     .biblioteca::before { display: none; }
+    .social-strip-inner { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 640px) {
@@ -576,6 +614,7 @@
     .session-top, .session-tabs, .session-body { padding-left: 18px; padding-right: 18px; }
     .lock-panel { padding: 24px 20px; }
     .book-actions { grid-template-columns: 1fr; }
+    .social-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -1047,6 +1086,37 @@
   </div>
 </section>
 
+<!-- REDES -->
+<section class="social-strip" id="redes">
+  <div class="social-strip-inner">
+    <div class="social-copy">
+      <div class="section-label">Comunidad</div>
+      <h2 class="section-title">Sigue a School to Home</h2>
+      <p>Compartimos avisos, material de apoyo, actualizaciones y contenido para que tus alumnos se mantengan cerca de la comunidad incluso fuera del horario de clase.</p>
+    </div>
+
+    <div class="social-grid">
+      <a class="social-card social-facebook" href="https://www.facebook.com/escuelavscovid?locale=es_LA" target="_blank" rel="noopener noreferrer">
+        <div class="social-card-top">
+          <div class="social-icon">f</div>
+          <div class="social-jump">Abrir</div>
+        </div>
+        <div class="social-name">Facebook</div>
+        <div class="social-handle">Escuela vs Covid<br>Noticias, avisos y publicaciones de la comunidad.</div>
+      </a>
+
+      <a class="social-card social-instagram" href="https://www.instagram.com/school_to_home/" target="_blank" rel="noopener noreferrer">
+        <div class="social-card-top">
+          <div class="social-icon">ig</div>
+          <div class="social-jump">Abrir</div>
+        </div>
+        <div class="social-name">Instagram</div>
+        <div class="social-handle">@school_to_home<br>Contenido visual, novedades y materiales destacados.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <section class="cta-banner">
   <h2>¿Listo para entrar<br>a tu universidad?</h2>
@@ -1062,6 +1132,10 @@
   <div class="footer-logo"><span style="color:var(--accent)">∫</span>chool t<span style="color:#1c6ce8">Ω</span> H<span style="font-size:1.3rem;vertical-align:sub;color:var(--accent)">₂</span>Ome</div>
   <p>Cursos y asesorías de ingreso · Fines de semana</p>
   <p style="margin-top:8px">📲 WhatsApp: <a href="https://wa.me/525640055147" target="_blank" style="color:var(--accent);text-decoration:none">564 005 5147</a></p>
+  <div class="footer-socials">
+    <a class="footer-social-link" href="https://www.facebook.com/escuelavscovid?locale=es_LA" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a class="footer-social-link" href="https://www.instagram.com/school_to_home/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
   <p style="margin-top:20px;font-size:0.75rem;color:#444">© 2025 School to Home. Todos los derechos reservados.</p>
 </footer>
 
