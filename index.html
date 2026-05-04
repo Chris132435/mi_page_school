@@ -488,6 +488,11 @@
   }
   .session-help { margin-top: 14px; color: #777; line-height: 1.6; font-size: 0.82rem; }
   .dark .session-help { color: #9a9a9a; }
+  .session-inline-action {
+    margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; border: none; background: transparent;
+    color: var(--accent); font-size: 0.82rem; font-weight: 700; cursor: pointer; padding: 0;
+  }
+  .session-inline-action:hover { text-decoration: underline; }
   .session-message {
     min-height: 24px; margin-top: 16px; font-size: 0.84rem; font-weight: 700; color: var(--accent);
   }
@@ -1096,6 +1101,7 @@
           </div>
         </div>
         <button class="session-submit" type="submit">Entrar al contenido</button>
+        <button class="session-inline-action" type="button" id="resetPasswordBtn">Recuperar contraseña</button>
       </form>
 
       <form class="session-form" id="registerForm">
@@ -1149,6 +1155,7 @@
   const sessionTabs = document.querySelectorAll('[data-session-tab]');
   const loginForm = document.getElementById('loginForm');
   const registerForm = document.getElementById('registerForm');
+  const resetPasswordBtn = document.getElementById('resetPasswordBtn');
   const sessionMessage = document.getElementById('sessionMessage');
   const privateLibraryContent = document.getElementById('privateLibraryContent');
   const libraryLockOverlay = document.getElementById('libraryLockOverlay');
@@ -1240,12 +1247,44 @@
   async function fetchAuthorizedStudent(email) {
     const { data, error } = await _supabase
       .from('alumnos_autorizados')
-      .select('email, nombre, activo')
+      .select('email, nombre, activo, estatus, fecha_inicio, fecha_fin')
       .eq('email', email)
       .maybeSingle();
 
     if (error) throw error;
     return data;
+  }
+
+  function studentAccessState(studentRecord) {
+    if (!studentRecord) {
+      return { allowed: false, message: 'Ese correo no aparece en la lista de alumnos autorizados.' };
+    }
+
+    if (!studentRecord.activo) {
+      return { allowed: false, message: 'Tu cuenta no tiene acceso activo en este momento.' };
+    }
+
+    const status = normalizeText(studentRecord.estatus || 'activo');
+    if (status === 'baja' || status === 'inactivo' || status === 'suspendido') {
+      return { allowed: false, message: `Tu acceso esta marcado como ${studentRecord.estatus}. Contacta a la institucion.` };
+    }
+
+    if (studentRecord.fecha_inicio) {
+      const startDate = new Date(`${studentRecord.fecha_inicio}T00:00:00`);
+      const now = new Date();
+      if (!Number.isNaN(startDate.getTime()) && startDate > now) {
+        return { allowed: false, message: `Tu acceso a la biblioteca se habilita a partir del ${studentRecord.fecha_inicio}.` };
+      }
+    }
+
+    if (studentRecord.fecha_fin) {
+      const endDate = new Date(`${studentRecord.fecha_fin}T23:59:59`);
+      if (!Number.isNaN(endDate.getTime()) && endDate < new Date()) {
+        return { allowed: false, message: 'Tu acceso a la biblioteca ya expiro. Contacta a la institucion para renovarlo.' };
+      }
+    }
+
+    return { allowed: true, message: '' };
   }
 
   async function loadBooksFromSupabase() {
@@ -1362,6 +1401,26 @@
     emptyLibraryState.classList.remove('active');
   }
 
+  async function sendPasswordReset() {
+    const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+
+    if (!email) {
+      setSessionMessage('Escribe primero tu correo para enviarte el enlace de recuperacion.');
+      return;
+    }
+
+    const { error } = await _supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.href
+    });
+
+    if (error) {
+      setSessionMessage(`Error: ${error.message}`);
+      return;
+    }
+
+    setSessionMessage('Te enviamos un enlace para restablecer tu contraseña.', true);
+  }
+
   async function updateProtectedContent() {
     const { data: { session } } = await _supabase.auth.getSession();
     const activeUser = session?.user || null;
@@ -1371,11 +1430,12 @@
     if (activeUser?.email) {
       try {
         studentRecord = await fetchAuthorizedStudent(activeUser.email);
-        isLoggedIn = Boolean(studentRecord && studentRecord.activo);
+        const accessState = studentAccessState(studentRecord);
+        isLoggedIn = accessState.allowed;
 
         if (!isLoggedIn) {
           await _supabase.auth.signOut();
-          setSessionMessage('Tu cuenta no tiene acceso activo en este momento. Contacta a la institucion.');
+          setSessionMessage(accessState.message);
         }
       } catch (error) {
         console.error('Error al verificar alumno autorizado:', error);
@@ -1415,6 +1475,22 @@
   }
 
   async function loginUser(email, password) {
+    let studentRecord = null;
+
+    try {
+      studentRecord = await fetchAuthorizedStudent(email);
+    } catch (studentError) {
+      console.error('Error al validar alumno antes del login:', studentError);
+      setSessionMessage('No se pudo validar tu acceso en la base de datos.');
+      return;
+    }
+
+    const preLoginAccessState = studentAccessState(studentRecord);
+    if (!preLoginAccessState.allowed) {
+      setSessionMessage(preLoginAccessState.message);
+      return;
+    }
+
     const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
@@ -1423,10 +1499,10 @@
     }
 
     try {
-      const studentRecord = await fetchAuthorizedStudent(email);
-      if (!studentRecord || !studentRecord.activo) {
+      const accessState = studentAccessState(studentRecord);
+      if (!accessState.allowed) {
         await _supabase.auth.signOut();
-        setSessionMessage('Tu correo no tiene acceso activo a la biblioteca.');
+        setSessionMessage(accessState.message);
         return;
       }
     } catch (studentError) {
@@ -1456,8 +1532,9 @@
       return;
     }
 
-    if (!studentRecord || !studentRecord.activo) {
-      setSessionMessage('Ese correo no aparece en la lista de alumnos con acceso autorizado.');
+    const registerAccessState = studentAccessState(studentRecord);
+    if (!registerAccessState.allowed) {
+      setSessionMessage(registerAccessState.message);
       return;
     }
 
@@ -1532,6 +1609,8 @@
       document.getElementById('registerPassword').value
     );
   });
+
+  resetPasswordBtn.addEventListener('click', sendPasswordReset);
 
   [logoutBtn, mobileLogoutBtn].forEach(button => {
     button.addEventListener('click', async () => {
