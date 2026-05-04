@@ -7,6 +7,7 @@ yarn-error.log*
 lerna-debug.log*
 # Entorno virtual de Python
 .clases/
+supabase/
 venv/
 env/
 # Diagnostic reports (https://nodejs.org/api/report.html)
